@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
+// import OpacityTransition from '../animations/Opacity';
 
 interface DialogProps {
   pages: string[];
@@ -29,7 +30,8 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
       left: 0,
       width: '100%',
       height: '20em',
-      background: "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)"
+      background: "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+      zIndex: 1000
     }}>
       <div
         style={{
