@@ -2,19 +2,25 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface DialogProps {
-  // text: string;
   pages: string[];
   position?: 'top' | 'bottom';
 }
 
 export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
   const [currentPage, setCurrentPage] = useState(0);
+  const [closed, setClosed] = useState(false);
 
   const handleAdvance = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(prev => prev + 1);
     }
   };
+
+  const handleClose = () => {
+    setClosed(true);
+  };
+
+  if (closed) return null;
 
   return (
     <div style={{
@@ -27,11 +33,6 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
     }}>
       <div
         style={{
-          // display: 'flex',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // flexDirection: 'row',
-          // gap: '.45em',
           color: '#d3d2e9',
           fontSize: '.90em',
           position: 'fixed',
@@ -47,14 +48,11 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
           border: '.25em solid #100d36',
           borderRadius: '1em',
           textAlign: 'center',
-          textWrap: 'wrap',
-          textOverflow: 'ellipsis',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
           backdropFilter: 'blur(5px)',
         }}
       >
-        <div
-        style={{
+        <div style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -65,27 +63,43 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
             src="svg/favicon.svg"
             width={150}
             height={150}
-            alt="Picture of the author"
+            alt="Ícone do diálogo"
           />
           <h1>{pages[currentPage]}</h1>
         </div>
-        {pages.length > 1 && currentPage < pages.length - 1 && (
-        <button
-          onClick={handleAdvance}
-          style={{
-            marginTop: '20px',
-            padding: '10px 20px',
-            fontSize: '1rem',
-            backgroundColor: '#2196F3',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
-          Avançar
-        </button>
-      )}
+        <div style={{ marginTop: '20px' }}>
+          {currentPage < pages.length - 1 ? (
+            <button
+              onClick={handleAdvance}
+              style={{
+                padding: '10px 20px',
+                fontSize: '1rem',
+                backgroundColor: '#2196F3',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Avançar
+            </button>
+          ) : (
+            <button
+              onClick={handleClose}
+              style={{
+                padding: '10px 20px',
+                fontSize: '1rem',
+                backgroundColor: '#e53935',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Fechar
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

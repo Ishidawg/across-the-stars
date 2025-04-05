@@ -10,7 +10,7 @@ const jerseyFont = Jersey_10({
 
 export const metadata: Metadata = {
   title: "Across the Stars",
-  description: "Um jogo point-and-click espacial",
+  description: "Point-and-click sci-fi feito em React",
 };
 
 export default function RootLayout({
