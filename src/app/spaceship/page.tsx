@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Dialog from '../components/dialog';
 import '../../app/globals.css';
 import StarsSpeeding from '../components/shaders/StarsSpeeding';
+// import PageTransition from '../components/animations/TransitionLayout';
 
 export default function Spaceship() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function Spaceship() {
     'Boa viagem e divirta-se!'
   ];
 
-  return (
+  return (      
     <main>
       <StarsSpeeding />
       <div
@@ -32,7 +33,7 @@ export default function Spaceship() {
           overflow: 'hidden',
           zIndex: 1,
         }}>
-          <Dialog pages={dialogPages} position='bottom' />
+          <Dialog pages={dialogPages} position="bottom" />
         <div style={{
           position: 'absolute',
           top: '50%',

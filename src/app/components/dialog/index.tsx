@@ -60,45 +60,73 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
           gap: '.45em',
         }}>
           <Image
-            src="svg/favicon.svg"
+            src="svg/serene.svg"
             width={150}
             height={150}
             alt="Ícone do diálogo"
           />
-          <h1>{pages[currentPage]}</h1>
-        </div>
-        <div style={{ marginTop: '20px' }}>
-          {currentPage < pages.length - 1 ? (
-            <button
-              onClick={handleAdvance}
-              style={{
-                padding: '10px 20px',
-                fontSize: '1rem',
-                backgroundColor: '#2196F3',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-            >
-              Avançar
-            </button>
-          ) : (
-            <button
-              onClick={handleClose}
-              style={{
-                padding: '10px 20px',
-                fontSize: '1rem',
-                backgroundColor: '#e53935',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-            >
-              Fechar
-            </button>
-          )}
+          <article>
+            <h1>{pages[currentPage]}</h1>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              marginTop: '20px',
+              // backgroundColor: 'red',
+            }}>
+              {currentPage < pages.length - 1 ? (
+                <Image
+                  src="svg/arrow.svg"
+                  width={64}
+                  height={64}
+                  alt="Arrow"
+                  onClick={handleAdvance}
+                  style={{
+                    cursor: 'pointer',
+                  }}
+                />
+                // <button
+                //   onClick={handleAdvance}
+                //   style={{
+                //     padding: '10px 20px',
+                //     fontSize: '1rem',
+                //     backgroundColor: '#2196F3',
+                //     color: 'white',
+                //     border: 'none',
+                //     borderRadius: '4px',
+                //     cursor: 'pointer',
+                //   }}
+                // >
+                //   Avançar
+                // </button>
+              ) : (
+                <Image
+                  src="svg/xred.svg"
+                  width={64}
+                  height={64}
+                  alt="Arrow"
+                  onClick={handleClose}
+                  style={{
+                    cursor: 'pointer',
+                  }}
+                />
+                // <button
+                //   onClick={handleClose}
+                //   style={{
+                //     padding: '10px 20px',
+                //     fontSize: '1rem',
+                //     backgroundColor: '#e53935',
+                //     color: 'white',
+                //     border: 'none',
+                //     borderRadius: '4px',
+                //     cursor: 'pointer',
+                //   }}
+                // >
+                //   Fechar
+                // </button>
+              )}
+            </div>
+          </article>
         </div>
       </div>
     </div>
