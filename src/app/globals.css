@@ -2,6 +2,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: never;
+  image-rendering: "pixelated";
+  /* overflow: hidden; */
 }
 
 html,
@@ -10,6 +15,11 @@ body {
   padding: 0;
   height: 100%;
   cursor: url('/cursor.cur'), auto;
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: never;
+  image-rendering: "pixelated";
+  overflow: hidden;
 }
 
 html {

@@ -49,7 +49,7 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
       <div
         style={{
           color: '#d3d2e9',
-          fontSize: '.90em',
+          fontSize: isMobile ? '.90em' : '1.2em',
           position: 'fixed',
           left: '50%',
           transform: 'translateX(-50%)',

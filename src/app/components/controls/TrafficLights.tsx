@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface TrafficLightsProps {
@@ -8,6 +8,21 @@ interface TrafficLightsProps {
 }
 
 export default function TrafficLights({ currentLight }: TrafficLightsProps) {
+
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  const isMobile = windowWidth < 768;
+
+
   let src = "";
   switch (currentLight) {
     case "green":
@@ -24,7 +39,7 @@ export default function TrafficLights({ currentLight }: TrafficLightsProps) {
   }
   return (
     <div style={{ position: "relative" }}>
-      <Image src={src} width={160} height={160} alt="Semáforo" />
+      <Image src={src} width={isMobile ? 140 : 200} height={isMobile ? 140 : 200} alt="Semáforo" />
     </div>
   );
 }

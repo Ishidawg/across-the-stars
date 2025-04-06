@@ -58,21 +58,21 @@ export default function Spaceship() {
   const handleLeverPulled = () => {
     if (trafficLight === "green") {
       if (phase < 3) {
-        setModalImage("/png/asteroid-milkshake.png");
+        setModalImage("svg/asteroid-milkshake.svg");
         setGameStatus("success");
         setModalTitle("Muito bem!");
         setModalMessage(`Você passou para a próxima fase! (Fase ${phase + 1} de 3)`);
         setModalOpen(true);
         setPhase(prev => prev + 1);
       } else {
-        setModalImage("/png/finalscreen.png");
+        setModalImage("svg/finalscreen.svg");
         setGameStatus("complete");
         setModalTitle("Parabéns!");
         setModalMessage("Você completou o jogo!");
         setModalOpen(true);
       }
     } else {
-      setModalImage("/png/gameover.png");
+      setModalImage("svg/gameover.svg");
       setGameStatus("gameOver");
       setModalTitle("Game Over");
       setModalMessage("Ohh não! Você errou o momento da alavanca.");
@@ -127,7 +127,7 @@ export default function Spaceship() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            imageRendering: "crisp-edges",
+            imageRendering: "pixelated",
             overflow: "hidden",
             zIndex: 1,
           }}
@@ -149,9 +149,9 @@ export default function Spaceship() {
               style={{
                 // backgroundColor: 'red',
                 position: "absolute",
-              ...(isMobile ? { bottom: "8%" } : { bottom: "4%" }),
+                ...(isMobile ? { bottom: "8%" } : { bottom: "6%" }),
                 // bottom: "8%",
-                ...(isMobile ? { left: "18%" } : { left: "40%" }),
+                ...(isMobile ? { left: "18%" } : { left: "41%" }),
                 // left: "39%",
                 // left: "18%",
                 transform: "translate(-50%, -50%)",
