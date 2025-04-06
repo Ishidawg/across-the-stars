@@ -36,6 +36,19 @@ body, button {
   }
 }
 
+@keyframes shake {
+  0% { transform: translate(0px, 0px); }
+  20% { transform: translate(-5px, 5px); }
+  40% { transform: translate(-5px, -5px); }
+  60% { transform: translate(5px, 5px); }
+  80% { transform: translate(5px, -5px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+.shake {
+  animation: shake 0.5s infinite;
+}
+
 .cat-spaceship {
   position: fixed;
   bottom: 20%;
