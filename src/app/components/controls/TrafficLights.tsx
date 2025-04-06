@@ -24,7 +24,7 @@ export default function TrafficLights({ currentLight }: TrafficLightsProps) {
   }
   return (
     <div style={{ position: "relative" }}>
-      <Image src={src} width={140} height={140} alt="Semáforo" />
+      <Image src={src} width={160} height={160} alt="Semáforo" />
     </div>
   );
 }

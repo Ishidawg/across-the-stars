@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import OpacityTransition from '../animations/Opacity';
 
 interface DialogProps {
@@ -8,8 +8,21 @@ interface DialogProps {
 }
 
 export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [closed, setClosed] = useState(false);
+
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  const isMobile = windowWidth < 768;
 
   const handleAdvance = () => {
     if (currentPage < pages.length - 1) {
@@ -44,8 +57,9 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
           bottom: position === 'bottom' ? '0' : 'auto',
           backgroundColor: '#2d2871',
           padding: '1em',
-          margin: '4em auto',
-          maxWidth: '100%',
+          margin: isMobile ? '2em auto' : '4em auto',
+          // margin: '4em auto',
+          width: isMobile ? '90%' : 'auto',
           maxHeight: '400px',
           border: '.25em solid #100d36',
           borderRadius: '1em',
