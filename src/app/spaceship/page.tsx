@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dialog from "../components/dialog";
 import StarsSpeeding from "../components/shaders/StarsSpeeding";
 import PageTransition from "../components/animations/TransitionLayout";
@@ -18,6 +18,7 @@ export default function Spaceship() {
 
   const [buttons, setButtons] = useState([false, false, false, false, false, false]);
   const [trafficLight, setTrafficLight] = useState<"normal" | "amarelo" | "verde" | "vermelho">("verde");
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   const allButtonsActive = buttons.every(status => status);
 
@@ -36,6 +37,17 @@ export default function Spaceship() {
       console.log("Game Over!");
     }
   };
+
+  useEffect(() => {
+      if (typeof window !== "undefined") {
+        setWindowWidth(window.innerWidth);
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }
+    }, []);
+  
+    const isMobile = windowWidth < 768;
 
   return (
     <main>
@@ -87,7 +99,9 @@ export default function Spaceship() {
                 // backgroundColor: 'red',
                 position: "absolute",
                 bottom: "8%",
-                left: "39%",
+                ...(isMobile ? { left: "18%" } : { left: "39%" }),
+                // left: "39%",
+                // left: "18%",
                 transform: "translate(-50%, -50%)",
                 pointerEvents: "auto",
               }}

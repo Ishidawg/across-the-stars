@@ -34,8 +34,8 @@ export default function Lever({ onLeverPulled, disabled = false }: LeverProps) {
       style={{ cursor: disabled ? "not-allowed" : "pointer", position: "relative" }}
     >
       <Image
-        src={pressed ? "/png/alavanca-puxada.png" : "/png/alavanca-normal.png"}
-        width={150}
+        src={pressed ? "svg/alavanca-puxada.svg" : "svg/alavanca-normal.svg"}
+        width={120}
         height={150}
         alt="Alavanca"
       />
