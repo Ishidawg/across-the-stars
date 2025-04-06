@@ -1,214 +1,99 @@
-"use client"
+"use client";
 
-// import { useRouter } from 'next/navigation';
-import Dialog from '../components/dialog';
-import '../../app/globals.css';
-import StarsSpeeding from '../components/shaders/StarsSpeeding';
-import PageTransition from '../components/animations/TransitionLayout';
-import Image from 'next/image';
+import { useState } from "react";
+import Dialog from "../components/dialog";
+import StarsSpeeding from "../components/shaders/StarsSpeeding";
+import PageTransition from "../components/animations/TransitionLayout";
+import Lever from "../components/controls/Lever";
+import TrafficLights from "../components/controls/TrafficLights";
+import ButtonsPanel from "../components/controls/ButtonsPanel";
+import "../../app/globals.css";
 
-export default function Spaceship() { 
-  // const router = useRouter();
-
+export default function Spaceship() {
   const dialogPages = [
-    'Bem-vindo à nave! Prepare-se para decolar.',
-    'Lembre-se de verificar os instrumentos de voo.',
-    'Boa viagem e divirta-se!'
+    "Bem-vindo à nave! Prepare-se para decolar.",
+    "Lembre-se de verificar os instrumentos de voo.",
+    "Boa viagem e divirta-se!",
   ];
 
-  return (      
+  const [buttons, setButtons] = useState([false, false, false, false, false, false]);
+  const [trafficLight, setTrafficLight] = useState<"normal" | "amarelo" | "verde" | "vermelho">("verde");
+
+  const allButtonsActive = buttons.every(status => status);
+
+  const handleButtonClick = (index: number) => {
+    if (!buttons[index]) {
+      const newButtons = [...buttons];
+      newButtons[index] = true;
+      setButtons(newButtons);
+    }
+  };
+
+  const onLeverPulled = () => {
+    if (trafficLight === "verde") {
+      console.log("Sucesso! Avançando para a próxima fase.")
+    } else {
+      console.log("Game Over!");
+    }
+  };
+
+  return (
     <main>
       <Dialog pages={dialogPages} position="bottom" />
       <PageTransition>
         <StarsSpeeding />
         <div
           style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundImage: 'url(/png/spaceship-transparence.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            imageRendering: 'crisp-edges',
-            overflow: 'hidden',
+            position: "relative",
+            width: "100vw",
+            height: "100vh",
+            backgroundImage: "url(/png/spaceship-transparence.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            imageRendering: "crisp-edges",
+            overflow: "hidden",
             zIndex: 1,
-          }}>
-          <div className="controls" style={{
-            backgroundColor: 'red'
-          }}>
-            <div className="buttons">
-              <Image
-                src="/png/button-1.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/button-2.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/button-3.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
+          }}
+        >
+          <div
+            className="controls"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          >
+            <ButtonsPanel buttons={buttons} onButtonClick={handleButtonClick} />
+            <div
+              className="lever"
+              style={{
+                // backgroundColor: 'blue',
+                position: "absolute",
+                bottom: "10%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                pointerEvents: allButtonsActive ? "auto" : "none",
+              }}
+            >
+              <Lever onLeverPulled={onLeverPulled} disabled={!allButtonsActive} />
             </div>
-            <div className="lever">
-              <Image
-                src="/png/alavanca-normal.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/alavanca-puxada.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
+            <div
+              className="traffic-lights"
+              style={{
+                // backgroundColor: 'red',
+                position: "absolute",
+                bottom: "8%",
+                left: "39%",
+                transform: "translate(-50%, -50%)",
+                pointerEvents: "auto",
+              }}
+            >
+              <TrafficLights currentLight={trafficLight} />
             </div>
-            <div className="traffic-lights">
-              <Image
-                src="/png/semaforo-normal.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/semaforo-amarelo.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/semaforo-verde.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-              <Image
-                src="/png/semaforo-vermelho.png"
-                width={350}
-                height={350}
-                alt="Ícone do jogo"
-                priority
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 0,
-                  filter: 'drop-shadow(0 0 2rem #00000080)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                }}
-              />
-            </div>
-          </div>
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            textAlign: 'center',
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-            zIndex: 2,
-          }}>
           </div>
         </div>
       </PageTransition>
