@@ -43,6 +43,7 @@ export default function Spaceship() {
   }, []);
 
   const isMobile = windowWidth < 768;
+  const isNotDumb = windowWidth > 1920;
   
 
   useEffect(() => {
@@ -149,9 +150,9 @@ export default function Spaceship() {
               style={{
                 // backgroundColor: 'red',
                 position: "absolute",
-                ...(isMobile ? { bottom: "8%" } : { bottom: "6%" }),
+                ...(isMobile ? { bottom: "7%" } : isNotDumb ? {bottom: "6%"} : { bottom: "1.6%" }),
                 // bottom: "8%",
-                ...(isMobile ? { left: "18%" } : { left: "41%" }),
+                ...(isMobile ? { left: "19%" } : { left: "41%" }),
                 // left: "39%",
                 // left: "18%",
                 transform: "translate(-50%, -50%)",

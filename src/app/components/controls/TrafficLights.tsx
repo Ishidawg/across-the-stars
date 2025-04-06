@@ -21,6 +21,7 @@ export default function TrafficLights({ currentLight }: TrafficLightsProps) {
   }, []);
 
   const isMobile = windowWidth < 768;
+  const isShittyMobile = windowWidth <= 400;
 
 
   let src = "";
@@ -39,7 +40,7 @@ export default function TrafficLights({ currentLight }: TrafficLightsProps) {
   }
   return (
     <div style={{ position: "relative" }}>
-      <Image src={src} width={isMobile ? 140 : 200} height={isMobile ? 140 : 200} alt="Semáforo" />
+      <Image src={src} width={(isMobile ? 150 : isShittyMobile ? 20 : 200)} height={isMobile ? 150 : isShittyMobile ? 100 : 200} alt="Semáforo" />
     </div>
   );
 }
