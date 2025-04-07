@@ -21,7 +21,7 @@ export default function TrafficLights({ currentLight }: TrafficLightsProps) {
   }, []);
 
   const isMobile = windowWidth < 768;
-  const isShittyMobile = windowWidth <= 400;
+  const isShittyMobile = windowWidth <= 400; // arrumar essa bct
 
 
   let src = "";

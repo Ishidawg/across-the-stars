@@ -10,6 +10,7 @@ import TrafficLights from "../components/controls/TrafficLights";
 // import Image from "next/image";
 import "../../app/globals.css";
 import Modal from "../components/genericModal";
+import PlayBGM from "../components/sound/bgm";
 
 export default function Spaceship() {
   const initialDialog = [
@@ -27,6 +28,7 @@ export default function Spaceship() {
   const [gameStatus, setGameStatus] = useState<"outOfControl" | "success" | "gameOver" | "complete">("outOfControl");
 
   const [phase, setPhase] = useState(1);
+  const [lightSpeed, setLightSpeed] = useState(1000);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -52,9 +54,9 @@ export default function Spaceship() {
     const interval = setInterval(() => {
       setTrafficLight(cycle[currentIndex]);
       currentIndex = (currentIndex + 1) % cycle.length;
-    }, 1000);
+    }, lightSpeed);
     return () => clearInterval(interval);
-  }, []);
+  }, [lightSpeed]);
 
   const handleLeverPulled = () => {
     if (trafficLight === "green") {
@@ -65,12 +67,14 @@ export default function Spaceship() {
         setModalMessage(`Você passou para a próxima fase! (Fase ${phase + 1} de 3)`);
         setModalOpen(true);
         setPhase(prev => prev + 1);
+        setLightSpeed(prev => Math.max(50, prev - 450));
       } else {
         setModalImage("svg/finalscreen.svg");
         setGameStatus("complete");
         setModalTitle("Parabéns!");
         setModalMessage("Você completou o jogo!");
         setModalOpen(true);
+        setLightSpeed(1000)
       }
     } else {
       setModalImage("svg/gameover.svg");
@@ -112,10 +116,9 @@ export default function Spaceship() {
   //   }
   // };
 
-
-
   return (
     <main>
+      <PlayBGM path="sound/bgm/background.mp3" volume={.1} loop={true} />
       <Dialog pages={initialDialog} position="bottom" />
       <PageTransition>
         <StarsSpeeding />

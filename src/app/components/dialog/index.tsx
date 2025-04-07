@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import CustomImage from '../sound/click';
 // import OpacityTransition from '../animations/Opacity';
 
 interface DialogProps {
@@ -91,15 +92,14 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
               // backgroundColor: 'red',
             }}>
               {currentPage < pages.length - 1 ? (
-                <Image
+                <CustomImage
                   src="svg/arrow.svg"
+                  alt="Arrow"
                   width={64}
                   height={64}
-                  alt="Arrow"
+                  soundPath="/sound/soundeffects/click.mp3"
+                  soundVolume={0.5}
                   onClick={handleAdvance}
-                  style={{
-                    cursor: 'pointer',
-                  }}
                 />
                 // <button
                 //   onClick={handleAdvance}
@@ -116,15 +116,14 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
                 //   Avançar
                 // </button>
               ) : (
-                <Image
+                <CustomImage
                   src="svg/xred.svg"
+                  alt="Close"
                   width={64}
                   height={64}
-                  alt="Arrow"
+                  soundPath="/sound/soundeffects/click.mp3"
+                  soundVolume={0.5}
                   onClick={handleClose}
-                  style={{
-                    cursor: 'pointer',
-                  }}
                 />
                 // <button
                 //   onClick={handleClose}

@@ -1,13 +1,15 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import Stars from './components/shaders/Stars';
 import Image from 'next/image';
 import React from 'react';
 import PageTransition from './components/animations/TransitionLayout';
+import PlayBGM from './components/sound/bgm';
+import ButtonPlay from './components/sound/play';
 
 export default function Home() {
-  const router = useRouter();
+  // const router = useRouter(); 
 
   return (
     <PageTransition>
@@ -24,6 +26,7 @@ export default function Home() {
           color: '#d3d2e9',
         }}
       >
+        <PlayBGM path="sound/bgm/title-screen.mp3" volume={.1} loop={true} />
         <Stars />
         <div
           style={{
@@ -63,9 +66,11 @@ export default function Home() {
             }}
           />
         </div>
-        <button
+        {/* <button
           type="button"
-          onClick={() => router.push('/spaceship')}
+          onClick={() => {
+            router.push('/spaceship')
+          }}
           style={{
             marginTop: '8rem',
             fontSize: '2rem',
@@ -82,7 +87,8 @@ export default function Home() {
           onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#2d2871')}
         >
           PLAY
-        </button>
+        </button> */}
+        <ButtonPlay />
         <div
           className='cat-spaceship'
           style={{
