@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌠 Across the Starts
+<p align="center">
+  <img src="https://github.com/Ishidawg/across-the-starts/blob/main/public/svg/asteroid-milkshake.svg" alt="Asteroid Milkshake" width="300"/>
+</p>
 
-## Getting Started
+Across the Starts é um jogo interativo onde o jogador ajuda uma menina a estabilizar uma nave para alcançar a lua. O projeto foi desenvolvido com Next.js e Framer Motion, utilizando lógica de estados, shaders e animações suaves.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎮 Objetivo do Jogo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A missão é simples, mas desafiadora: *estabilizar a nave* por meio da alavanca e semáforo para que a menina consiga alcançar a lua.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👩‍🚀 Como Funciona
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+O jogo é dividido em *cenas interativas*, onde o jogador:
+- Interage com a alavanca (Lever.tsx)
+- Ativa luzes de controle (TrafficLights.tsx)
+- Usa painéis com botões (ButtonsPanel.tsx)
+- Acompanha os diálogos e transições entre os eventos (dialog/index.tsx, TransitionLayout.tsx)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔒 A *alavanca de decolagem* só pode ser ativada quando todos os 6 botões do painel estiverem ligados, sinalizados pelo semáforo verde.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📶 O *semáforo* serve como um indicador visual de segurança para a decolagem.
 
-## Deploy on Vercel
+📱 O layout é responsivo e se adapta ao tamanho da tela para manter a experiência fluida no celular e no desktop.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔧 Tecnologias Usadas
+
+- *Next.js* – Framework React para aplicações web
+- *TypeScript* – Tipagem forte para maior segurança
+- *Framer Motion* – Animações fluidas e naturais
+- *GLSL Shaders* – Para efeitos de estrelas em movimento (Stars.tsx e StarsSpeeding.tsx)
+
+---
+
+## 🔍 Funcionalidades
+
+-   ✅ Interface responsiva com layout fluido
+    
+-   🎮 Interações com painéis, luzes e alavancas
+    
+-   💬 Sistema de diálogo dinâmico por cena
+    
+-   🚦 Validação de estado antes da decolagem
+    
+-   🌌 Animações de estrelas com shaders GLSL
+    
+-   🔄 Transições suaves entre cenas com Framer Motion
+---
+
+## 🧠 Lógica Principal
+
+- O estado da nave é controlado por interações do jogador
+- Cada interação modifica a cena ou altera elementos visuais
+- A estabilização depende de ativar corretamente cada componente da cabine
+- O botão de avanço (SceneButton.tsx) só aparece quando todos os elementos da cena foram ativados com sucesso
+
+---
+
+## 🧩 Estrutura do Projeto
+
+bash
+/src
+└── app
+    ├── components
+    │   ├── animations/          # Animações e efeitos visuais
+    │   ├── controls/            # Botões, alavancas e painéis
+    │   ├── dialog/              # Balões de diálogo e textos
+    │   └── shaders/             # Efeitos com shaders (como estrelas)
+    ├── spaceship/
+    │   └── page.tsx             # Página da nave (cena específica)
+    ├── favicon.ico              # Ícone do site
+    ├── globals.css              # Estilização global
+    ├── layout.tsx               # Layout raiz do App Router
+    └── page.tsx                 # Página inicial do projeto
+/public
+├── png/                         # Imagens em PNG usadas no projeto
+└── svg/                         # Imagens em SVG usadas no projeto
+
+
+
+## 🌀 Fluxo do Jogo
+
+1.  O jogador começa na *Cena 1* e interage com o painel.
+    
+2.  Os elementos ativados corretamente liberam o botão de troca de cena.
+    
+3.  A troca é feita com useRouter e animação com Framer Motion.
+    
+4.  Diálogos orientam o jogador e são carregados dinamicamente de data.ts.
+    
+5.  A missão é concluída com a decolagem da nave.
+
+## 💬 Diálogos Dinâmicos
+
+Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. 
+
+Exemplo:
+ts
+{
+  id: 'cena1',
+  personagem: 'Menina',
+  texto: 'A nave está fora de controle!'
+}
+
+Esses diálogos funcionam como um pequeno guia para o jogador durante as fases da missão. Na primeira cena, por exemplo, a personagem principal envia até 3 mensagens curtas enquanto interagimos com o painel da nave.
+
+## 📦 Exemplo com Framer Motion
+
+O projeto usa transições animadas como esta:
+
+tsx
+<motion.div initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+> <CenaAtual />
+</motion.div>
+
+
+## 🛠️ Como Rodar Localmente
+
+1.  Clone o repositório:
+    bash
+     git clone https://github.com/Ishidawg/across-the-starts
+    
+2. Acesse a pasta do projeto:
+    bash
+   cd across-the-starts
+    
+3.  Instale as dependências:
+    bash
+    npm install
+    
+4. Rode o projeto:
+    bash
+    npm run dev
+    
+## 👩‍💻 Autores
+-   Cíntia – [[cintiambr](https://github.com/cintiambr)]
+    
+-   Maria Eduarda – [[dudabertuzzi](https://github.com/dudabertuzzi)]
+    
+-  Willian – [[Ishidawg](https://github.com/Ishidawg)]
+    
+-   Yasmim – [[@yasmimlb](https://github.com/yasmimlb)]
+
+
+## 🌕 Fim da Jornada
+
+A cada passo dado, a nave se aproxima da lua. A missão está nas suas mãos:  
+*controle, estabilize e voe!*
