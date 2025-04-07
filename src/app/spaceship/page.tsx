@@ -196,6 +196,7 @@ export default function Spaceship() {
         onClose={() => {
           setModalOpen(false);
           setGameStatus("outOfControl");
+          setTrafficLight("yellow");
         }}
       />
     </main>

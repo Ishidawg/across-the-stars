@@ -34,14 +34,9 @@ body, button {
 
 @keyframes move-spaceship {
   0% {
-    transform: translateX(-100%) rotate(40deg);
-    zoom: 1;
-  }
-  50% {
-    zoom: 1.8;
+    transform: translateX(-100vw) rotate(40deg);
   }
   100% {
-    zoom: 1;
     transform: translateX(100vw) rotate(40deg);
   }
 }
