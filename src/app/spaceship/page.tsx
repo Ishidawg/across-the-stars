@@ -61,7 +61,7 @@ export default function Spaceship() {
   const handleLeverPulled = () => {
     if (trafficLight === "green") {
       if (phase < 3) {
-        setModalImage("svg/asteroid-milkshake.svg");
+        setModalImage("/png/asteroid-milkshake.png");
         setGameStatus("success");
         setModalTitle("Muito bem!");
         setModalMessage(`Você passou para a próxima fase! (Fase ${phase + 1} de 3)`);
@@ -69,7 +69,7 @@ export default function Spaceship() {
         setPhase(prev => prev + 1);
         setLightSpeed(prev => Math.max(50, prev - 450));
       } else {
-        setModalImage("svg/finalscreen.svg");
+        setModalImage("/png/finalscreen.png");
         setGameStatus("complete");
         setModalTitle("Parabéns!");
         setModalMessage("Você completou o jogo!");
@@ -77,11 +77,13 @@ export default function Spaceship() {
         setLightSpeed(1000)
       }
     } else {
-      setModalImage("svg/gameover.svg");
+      setModalImage("/png/gameover.png");
       setGameStatus("gameOver");
       setModalTitle("Game Over");
       setModalMessage("Ohh não! Você errou o momento da alavanca.");
       setModalOpen(true);
+      setPhase(1);
+      setLightSpeed(1000);
     }
   };
 
