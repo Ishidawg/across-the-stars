@@ -66,8 +66,8 @@ O jogo é dividido em *cenas interativas*, onde o jogador:
 
 ## 🧩 Estrutura do Projeto
 
-```
-bash
+```bash
+
 └── /src
     └── app
         └── components
