@@ -66,22 +66,25 @@ O jogo é dividido em *cenas interativas*, onde o jogador:
 
 ## 🧩 Estrutura do Projeto
 
-- /src
-  - app
-    - components
-      - animations → Animações e efeitos visuais
-      - controls → Botões, alavancas e painéis
-      - dialog → Balões de diálogo e textos
-      - shaders → Efeitos com shaders (como estrelas)
-      - spaceship
-        - page.tsx → Página da nave (cena específica)
-    - favicon.ico → Ícone do site
-    - globals.css → Estilização global
-    - layout.tsx → Layout raiz do App Router
-    - page.tsx → Página inicial
-- /public
-  - png → Imagens PNG
-  - svg → Imagens SVG
+```
+bash
+└── /src
+    └── app
+        └── components
+            ├── animations/      # Animações e efeitos visuais
+            ├── controls/        # Botões, alavancas e painéis
+            ├── dialog/          # Balões de diálogo e textos
+            ├── shaders/         # Efeitos com shaders (como as estrelas)
+            └── spaceship/
+                └── page.tsx     # Página da nave (cena específica)
+        ├── favicon.ico          # Ícone do site
+        ├── globals.css          # Estilização global
+        ├── layout.tsx           # Layout raiz do App Router
+        └── page.tsx             # Página inicial do projeto
+└── /public
+    ├── png/                    # Imagens em PNG usadas no projeto
+    └── svg/                    # Imagens em SVG usadas no projeto
+```
 
 ## 🌀 Fluxo do Jogo
 
@@ -100,7 +103,7 @@ O jogo é dividido em *cenas interativas*, onde o jogador:
 Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. Onde o initialDialog é um array de string:
 
 Exemplo:
-ts
+```ts
 <Dialog pages={initialDialog} position="bottom" />
 
  const initialDialog = [
@@ -110,39 +113,39 @@ ts
     "Caso não conseguir... teremos problemas... hehe",
     "Boa sorte!",
   ];
-
+```
 Esses diálogos funcionam como um pequeno guia para o jogador.
 
 ## 📦 Exemplo com Framer Motion
 
 O projeto usa transições animadas como esta:
 
-tsx
+```tsx
 <motion.div initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   exit={{ opacity: 0 }}
 > <CenaAtual />
 </motion.div>
-
+```
 
 ## 🛠️ Como Rodar Localmente
 
 1.  Clone o repositório:
-    bash
+    ```bash
      git clone https://github.com/Ishidawg/across-the-starts
-    
+    ```
 2. Acesse a pasta do projeto:
-    bash
+    ```bash
    cd across-the-starts
-    
+   ``` 
 3.  Instale as dependências:
-    bash
+    ```bash
     npm install
-    
+    ```
 4. Rode o projeto:
-    bash
+   ``` bash
     npm run dev
-    
+    ```
 ## 👩‍💻 Autores
 -   Cíntia – [[cintiambr](https://github.com/cintiambr)]
     
@@ -155,5 +158,4 @@ tsx
 
 ## 🌕 Fim da Jornada
 
-A cada passo dado, a nave se aproxima da lua. A missão está nas suas mãos:  
-*controle, estabilize e voe!*
+A cada passo dado, a nave se aproxima da lua. A missão está nas suas mãos:  *controle, estabilize e voe!*
