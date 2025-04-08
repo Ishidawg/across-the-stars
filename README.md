@@ -66,25 +66,22 @@ O jogo é dividido em *cenas interativas*, onde o jogador:
 
 ## 🧩 Estrutura do Projeto
 
-bash
-/src
-└── app
-    ├── components
-    │   ├── animations/          # Animações e efeitos visuais
-    │   ├── controls/            # Botões, alavancas e painéis
-    │   ├── dialog/              # Balões de diálogo e textos
-    │   └── shaders/             # Efeitos com shaders (como estrelas)
-    ├── spaceship/
-    │   └── page.tsx             # Página da nave (cena específica)
-    ├── favicon.ico              # Ícone do site
-    ├── globals.css              # Estilização global
-    ├── layout.tsx               # Layout raiz do App Router
-    └── page.tsx                 # Página inicial do projeto
-/public
-├── png/                         # Imagens em PNG usadas no projeto
-└── svg/                         # Imagens em SVG usadas no projeto
-
-
+- /src
+  - app
+    - components
+      - animations → Animações e efeitos visuais
+      - controls → Botões, alavancas e painéis
+      - dialog → Balões de diálogo e textos
+      - shaders → Efeitos com shaders (como estrelas)
+      - spaceship
+        - page.tsx → Página da nave (cena específica)
+    - favicon.ico → Ícone do site
+    - globals.css → Estilização global
+    - layout.tsx → Layout raiz do App Router
+    - page.tsx → Página inicial
+- /public
+  - png → Imagens PNG
+  - svg → Imagens SVG
 
 ## 🌀 Fluxo do Jogo
 
@@ -100,17 +97,21 @@ bash
 
 ## 💬 Diálogos Dinâmicos
 
-Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. 
+Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. Onde o initialDialog é um array de string:
 
 Exemplo:
 ts
-{
-  id: 'cena1',
-  personagem: 'Menina',
-  texto: 'A nave está fora de controle!'
-}
+<Dialog pages={initialDialog} position="bottom" />
 
-Esses diálogos funcionam como um pequeno guia para o jogador durante as fases da missão. Na primeira cena, por exemplo, a personagem principal envia até 3 mensagens curtas enquanto interagimos com o painel da nave.
+ const initialDialog = [
+    "Por conta dos detritos e rochas no espaço, a nave está fora de controle!",
+    "Puxe a alavanca no momento em que o semáforo ficar verde.",
+    "Assim evitamos colisões e conseguimos velocidade para escapar daqui!",
+    "Caso não conseguir... teremos problemas... hehe",
+    "Boa sorte!",
+  ];
+
+Esses diálogos funcionam como um pequeno guia para o jogador.
 
 ## 📦 Exemplo com Framer Motion
 
