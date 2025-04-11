@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Dialog from "../components/dialog";
+// import Dialog from "../components/dialog";
 import StarsSpeeding from "../components/shaders/StarsSpeeding";
 import PageTransition from "../components/animations/TransitionLayout";
 import Lever from "../components/controls/Lever";
@@ -13,16 +13,16 @@ import Modal from "../components/genericModal";
 import PlayBGM from "../components/sound/bgm";
 
 export default function Spaceship() {
-  const initialDialog = [
-    "Por conta dos detritos e rochas no espaço, a nave está fora de controle!",
-    "Puxe a alavanca no momento em que o semáforo ficar verde.",
-    "Assim evitamos colisões e conseguimos velocidade para escapar daqui!",
-    "Caso não conseguir... teremos problemas... hehe",
-    "Boa sorte!",
-  ];
+  // const initialDialog = [
+  //   "Por conta dos detritos e rochas no espaço, a nave está fora de controle!",
+  //   "Puxe a alavanca no momento em que o semáforo ficar verde.",
+  //   "Assim evitamos colisões e conseguimos velocidade para escapar daqui!",
+  //   "Caso não conseguir... teremos problemas... hehe",
+  //   "Boa sorte!",
+  // ];
 
   // const [buttons, setButtons] = useState([false, false, false, false, false, false]);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  // const [windowWidth, setWindowWidth] = useState<number>(0);
 
   const [trafficLight, setTrafficLight] = useState<"green" | "yellow" | "red">("red");
   const [gameStatus, setGameStatus] = useState<"outOfControl" | "success" | "gameOver" | "complete">("outOfControl");
@@ -35,17 +35,17 @@ export default function Spaceship() {
   const [modalMessage, setModalMessage] = useState("");
   const [modalImage, setModalImage] = useState("");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWindowWidth(window.innerWidth);
-      const handleResize = () => setWindowWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setWindowWidth(window.innerWidth);
+  //     const handleResize = () => setWindowWidth(window.innerWidth);
+  //     window.addEventListener("resize", handleResize);
+  //     return () => window.removeEventListener("resize", handleResize);
+  //   }
+  // }, []);
 
-  const isMobile = windowWidth < 768;
-  const isNotDumb = windowWidth > 1920;
+  // const isMobile = windowWidth < 768;
+  // const isNotDumb = windowWidth > 1920;
   
 
   useEffect(() => {
@@ -119,14 +119,22 @@ export default function Spaceship() {
   // };
 
   return (
-    <main>
+    <main style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
       <PlayBGM path="sound/bgm/background.mp3" volume={.1} loop={true} />
-      <Dialog pages={initialDialog} position="bottom" />
+      {/* <Dialog pages={initialDialog} position="bottom" /> */}
       <PageTransition>
         <StarsSpeeding />
         <div
           style={{
-            position: "relative",
+            // position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             width: "100vw",
             height: "100vh",
             backgroundImage: "url(/png/spaceship-emptysemaforo.png)",
@@ -142,10 +150,19 @@ export default function Spaceship() {
           <div
             className="controls"
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-end",
+              flexDirection: "row",
+              // flexGrow: 1,
+              marginRight: "9em",
+
+              // gap: "1rem",
+              // backgroundColor: "red",
+              // position: "absolute",
+              // top: 0,
+              // left: 0,
+              maxWidth: "40em",
               height: "100%",
               // pointerEvents: "none",
             }}
@@ -153,16 +170,20 @@ export default function Spaceship() {
             <div
               className="traffic-lights"
               style={{
-                // backgroundColor: 'red',
-                position: "absolute",
-                ...(isMobile ? { bottom: "7%" } : isNotDumb ? {bottom: "6%"} : { bottom: "1.6%" }),
+                // marginBottom: "2em",
+                // backgroundColor: 'blue',
+                // position: "relative",
+                // left: "1.5em",
+                // marginLeft: "1em",
+                // position: "absolute",
+                // ...(isMobile ? { bottom: "7%" } : isNotDumb ? {bottom: "6%"} : { bottom: "1.6%" }),
                 // bottom: "8%",
-                ...(isMobile ? { left: "19%" } : { left: "41%" }),
+                // ...(isMobile ? { left: "19%" } : { left: "41%" }),
                 // left: "39%",
                 // left: "18%",
-                transform: "translate(-50%, -50%)",
+                // transform: "translate(-50%, -50%)",
                 pointerEvents: "auto",
-                zIndex: 2,
+                zIndex: 3,
               }}
             >
               <TrafficLights currentLight={trafficLight} />
@@ -173,11 +194,11 @@ export default function Spaceship() {
             <div
               className="lever"
               style={{
-                // backgroundColor: 'blue',
-                position: "absolute",
-                bottom: "10%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
+                // backgroundColor: 'yellow',
+                // position: "absolute",
+                // bottom: "10%",
+                // left: "50%",
+                // transform: "translate(-50%, -50%)",
                 pointerEvents: gameStatus === "outOfControl" ? "auto" : "none",
                 zIndex: 2,
               }}
