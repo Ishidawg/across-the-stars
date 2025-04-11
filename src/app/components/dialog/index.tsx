@@ -60,7 +60,7 @@ export default function Dialog({ pages, position = 'bottom' }: DialogProps) {
           padding: '1em',
           margin: isMobile ? '2em auto' : '4em auto',
           // margin: '4em auto',
-          width: isMobile ? '90%' : 'auto',
+          minWidth: isMobile ? '90%' : 'auto',
           maxHeight: '400px',
           border: '.25em solid #100d36',
           borderRadius: '1em',
