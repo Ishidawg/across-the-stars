@@ -155,11 +155,11 @@ O projeto usa transições animadas como esta:
     npm run dev
     ```
 ## 👩‍💻 Autores
--   Cíntia – [[cintiambr](https://github.com/cintiambr)]
+-   Cíntia – [[@cintiambr](https://github.com/cintiambr)]
     
--   Maria Eduarda – [[dudabertuzzi](https://github.com/dudabertuzzi)]
+-   Maria Eduarda – [[@dudabertuzzi](https://github.com/dudabertuzzi)]
     
--  Willian – [[Ishidawg](https://github.com/Ishidawg)]
+-  Willian – [[@Ishidawg](https://github.com/Ishidawg)]
     
 -   Yasmim – [[@yasmimlb](https://github.com/yasmimlb)]
 
