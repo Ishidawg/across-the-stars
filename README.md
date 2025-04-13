@@ -42,8 +42,8 @@ O jogo é dividido em *cenas interativas*, onde o jogador:
 
 ## 🎨 Design no Figma
 Você pode conferir o design completo do projeto no Figma:
-👉 Protótipo no Figma – Across The Stars
- [[👉 Protótipo no Figma – Across The Stars]([https://github.com/dudabertuzzi](https://www.figma.com/design/VkxgO8PCUhGcEOAeKtKzsS/Across-The-Stars?m=auto&t=cq4iFGPb0loNX4wO-1))]
+
+[👉 Protótipo no Figma – Across The Stars](https://github.com/dudabertuzzi](https://www.figma.com/design/VkxgO8PCUhGcEOAeKtKzsS/Across-The-Stars?m=auto&t=cq4iFGPb0loNX4wO-1)
 
 ---
 
