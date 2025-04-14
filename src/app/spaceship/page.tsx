@@ -72,7 +72,7 @@ export default function Spaceship() {
         setModalImage("/png/finalscreen.png");
         setGameStatus("complete");
         setModalTitle("Parabéns!");
-        setModalMessage("Você completou o jogo!");
+        setModalMessage("Chegamos na lua!");
         setModalOpen(true);
         setLightSpeed(1000)
       }
