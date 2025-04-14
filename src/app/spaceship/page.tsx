@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import Dialog from "../components/dialog";
+import Dialog from "../components/dialog";
 import StarsSpeeding from "../components/shaders/StarsSpeeding";
 import PageTransition from "../components/animations/TransitionLayout";
 import Lever from "../components/controls/Lever";
@@ -13,13 +13,13 @@ import Modal from "../components/genericModal";
 import PlayBGM from "../components/sound/bgm";
 
 export default function Spaceship() {
-  // const initialDialog = [
-  //   "Por conta dos detritos e rochas no espaço, a nave está fora de controle!",
-  //   "Puxe a alavanca no momento em que o semáforo ficar verde.",
-  //   "Assim evitamos colisões e conseguimos velocidade para escapar daqui!",
-  //   "Caso não conseguir... teremos problemas... hehe",
-  //   "Boa sorte!",
-  // ];
+  const initialDialog = [
+    "Por conta dos detritos e rochas no espaço, a nave está fora de controle!",
+    "Puxe a alavanca no momento em que o semáforo ficar verde.",
+    "Assim evitamos colisões e conseguimos velocidade para escapar daqui!",
+    "Caso não conseguir... teremos problemas... hehe",
+    "Boa sorte!",
+  ];
 
   // const [buttons, setButtons] = useState([false, false, false, false, false, false]);
   // const [windowWidth, setWindowWidth] = useState<number>(0);
@@ -72,7 +72,7 @@ export default function Spaceship() {
         setModalImage("/png/finalscreen.png");
         setGameStatus("complete");
         setModalTitle("Parabéns!");
-        setModalMessage("Você completou o jogo!");
+        setModalMessage("Chegamos na lua!");
         setModalOpen(true);
         setLightSpeed(1000)
       }
@@ -126,7 +126,7 @@ export default function Spaceship() {
       alignItems: "center",
     }}>
       <PlayBGM path="sound/bgm/background.mp3" volume={.1} loop={true} />
-      {/* <Dialog pages={initialDialog} position="bottom" /> */}
+      <Dialog pages={initialDialog} position="bottom" />
       <PageTransition>
         <StarsSpeeding />
         <div
@@ -137,7 +137,8 @@ export default function Spaceship() {
             alignItems: "center",
             width: "100vw",
             height: "100vh",
-            backgroundImage: "url(/png/spaceship-emptysemaforo.png)",
+            // backgroundImage: "url(/png/spaceship-emptysemaforo.png)",
+            backgroundImage: gameStatus !== "complete" ? "url(/png/spaceship-emptysemaforo.png)" : "",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -150,7 +151,8 @@ export default function Spaceship() {
           <div
             className="controls"
             style={{
-              display: "flex",
+              // display: "flex",
+              display: gameStatus !== "complete" ? "flex" : "none",
               justifyContent: "center",
               alignItems: "flex-end",
               flexDirection: "row",
