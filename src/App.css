@@ -2,11 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
 :root {
   --white-primary: hsl(243, 34%, 87%);
-  --white-brightness: hsla(243, 33%, 87%, 0.350);
+  --white-brightness: hsla(243, 33%, 87%, 0.150);
   --purple-bg: hsl(244, 48%, 30%);
   --purple-bg-hover: hsl(244, 48%, 35%);
 }
@@ -68,7 +69,7 @@
   transform: translateY(-5px);
   background-color: var(--purple-bg-hover);
   cursor: pointer;
-  box-shadow: 0 0 10px 5px var(--white-brightness);
+  box-shadow: 0 0 18px 4px var(--white-brightness);
 }
 
 @media (max-width: 380px)  {
@@ -77,3 +78,78 @@
   }
 }
 
+/* LevelOne */
+
+.level-one-container {
+  height: 100dvh;
+}
+
+.spaceship {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.level-one-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-one-controls img {
+  width: 140px;
+}
+
+.level-one-controls {
+  position: relative;
+  top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.level-one-buttons img {
+    max-width: 60px;
+    margin: -5px;
+}
+
+.level-one-buttons {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-one-buttons .small img:last-child {
+  position: relative;
+  right: 5px;
+}
+
+.level-one-buttons .medium {
+  position: relative;
+  left: 5px;
+}
+
+.level-one-buttons .medium img:last-child {
+  position: relative;
+  left: 8px;
+}
+
+.level-one-buttons .large {
+  position: relative;
+  left: 10px;
+}
+
+.level-one-buttons .large img:last-child {
+  position: relative;
+  left: 16px;
+}
+
+/* @media (max-width: 500px)  {
+  .level-one-buttons img {
+    width: 20px;
+    margin: -5px;
+  }
+}
+ */

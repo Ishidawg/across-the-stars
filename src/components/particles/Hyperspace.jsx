@@ -3,7 +3,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { MoveDirection, OutMode } from "@tsparticles/engine";
 
-export default function Star() {
+export default function Hyperspace() {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -23,41 +23,51 @@ export default function Star() {
       },
       fpsLimit: 30,
       particles: {
-        color: "#d4d3e9",
         number: {
-          value: 150,
+          value: 120,
         },
-        move: {
-          direction: MoveDirection.none,
-          enable: true,
-          outModes: {
-            default: OutMode.out,
-          },
-          random: true,
-          speed: 0.1,
-          straight: false,
+        color: {
+          value: "#d4d3e9"
         },
-        opacity: {
+        shape: {
+          type: "circle",
+        },
+        opacity: { value: 0.8 },
+        size: {
+          value: { min: 0.5, max: 2.0 },
           animation: {
             enable: true,
-            speed: 3,
+            speed: 4,
+            minimumValue: 0.5,
+            startValue: "min",
+            destroy: "none",
+            mode: "increase",
             sync: false,
           },
-          value: { min: 0, max: 1 },
         },
-        size: {
-          value: { min: 1, max: 3 },
-        },
-        shadow: { // I have add shadow to make a "blur" effect around the particle
+        move: {
           enable: true,
-          color: "#FFFF88",
-          blur: 5,
-          offset: {
-            x: 0,
-            y: 0,
+          speed: {min: 4, max: 10},
+          direction: MoveDirection.outside,
+          straight: true, // dont se difference
+          outModes: OutMode.out,
+          random: true,
+          trail: {
+            enable: true,
+            length: 20,
+            fill: {
+              color: "#0F0F37",
+            },
           },
         },
       },
+      emitters: {
+        rate: {
+            quantity: 10,
+            delay: 5,
+        },
+      },
+    detectRetina: true,
     }),
     [],
   );
