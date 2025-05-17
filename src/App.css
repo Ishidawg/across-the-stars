@@ -6,6 +6,7 @@
 
 :root {
   --white-primary: hsl(243, 34%, 87%);
+  --white-brightness: hsla(243, 33%, 87%, 0.350);
   --purple-bg: hsl(244, 48%, 30%);
   --purple-bg-hover: hsl(244, 48%, 35%);
 }
@@ -23,12 +24,21 @@
 }
 
 .home-container img {
+  image-rendering: pixelated;
   width: 320px;
 }
 
 .home-container h1 {
   color: var(--white-primary);
   font-size: 6.4rem;
+  animation: spacing-letters 2.5s ease infinite;
+}
+
+/* Game Text Animation */
+@keyframes spacing-letters {
+  0% { letter-spacing: 0; }
+  50% { letter-spacing: 2px; }
+  100% { letter-spacing: 0; }
 }
 
 .home-container div {
@@ -58,12 +68,12 @@
   transform: translateY(-5px);
   background-color: var(--purple-bg-hover);
   cursor: pointer;
+  box-shadow: 0 0 10px 5px var(--white-brightness);
 }
 
 @media (max-width: 380px)  {
   .home-container h1  {
-      font-size: 5.4rem;
+      font-size: 5.2rem;
   }
-  
 }
 

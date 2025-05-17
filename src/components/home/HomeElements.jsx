@@ -1,5 +1,6 @@
 import gameLogo from '../../assets/svg/logo.svg';
 import '../../App.css'
+import { NavLink } from 'react-router';
 
 export default function HomeElements() {
 
@@ -8,7 +9,9 @@ export default function HomeElements() {
       <img src={gameLogo} alt="Logo" />
       <div>
         <h1>Across the stars</h1>
-        <button>Play</button>
+        <NavLink to="/level_one">
+          <button>Play</button>
+        </NavLink>
       </div>
     </div>
   );

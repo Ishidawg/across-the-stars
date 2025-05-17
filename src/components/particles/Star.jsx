@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { FullScreen, MoveDirection, OutMode } from "@tsparticles/engine";
+import { MoveDirection, OutMode } from "@tsparticles/engine";
 
 export default function Star() {
   const [init, setInit] = useState(false);
@@ -20,7 +20,6 @@ export default function Star() {
     () => ({
       background: {
         color: "#0F0F37",
-        zIndex: -1,
       },
       fpsLimit: 30,
       particles: {
@@ -40,7 +39,7 @@ export default function Star() {
         opacity: {
           animation: {
             enable: true,
-            speed: 1,
+            speed: 3,
             sync: false,
           },
           value: { min: 0, max: 1 },
@@ -48,7 +47,30 @@ export default function Star() {
         size: {
           value: { min: 1, max: 3 },
         },
+        shadow: { // I have add shadow to make a "blur" effect around the particle
+          enable: true,
+          color: "#FFFF88",
+          blur: 5,
+          offset: {
+            x: 0,
+            y: 0,
+          },
+        },
       },
+      // interactivity: { Repulse the stars
+      //     events: {
+      //       onHover: {
+      //         enable: true,
+      //         mode: "repulse",
+      //       }
+      //     },
+      //     modes: {
+      //       repulse: {
+      //         distance: 100,
+      //         duration: 1,
+      //       }
+      //     }
+      //   }
     }),
     [],
   );
