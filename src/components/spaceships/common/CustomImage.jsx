@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function CustomButton({ normalSrc, pressedSrc, alt, onPress }) {
+export default function CustomImage({ normalSrc, pressedSrc, alt, onPress }) {
   const [src, setSrc] = useState(normalSrc)
 
   return (

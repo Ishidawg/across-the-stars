@@ -10,6 +10,7 @@
   font-style: normal;
 
   cursor: url("./assets/svg/cursor.svg"), pointer;
+  text-rendering: optimizeLegibility;
 }
 
 html {
