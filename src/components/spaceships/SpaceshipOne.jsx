@@ -27,6 +27,7 @@ import Arrow from "../../assets/png/dialog/level_one/flecha-roxa.png";
 
 // Sounds
 import errorSound from "@assets/sound/soundeffects/error-2.mp3"
+import clickElementSound from "@assets/sound/soundeffects/click-elements.mp3"
 import levelSoundtrack from "@assets/sound/soundtrack/level-one.mp3"
 
 // Others
@@ -58,6 +59,7 @@ export default function SpaceshipOne() {
 
   const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.2, loop: true });
   const [errorSFX] = useSound(errorSound, { volume: 0.5 })
+  const [clickSFX] = useSound(clickElementSound, { volume: 0.5 })
 
   const location = useLocation(); // need this to know if route changes, so I can stop music
 
@@ -118,6 +120,7 @@ export default function SpaceshipOne() {
   }
 
   function handleButtonPress(id) {
+    clickSFX()
     if (phase !== 'input') return
     if (id === sequence[inputIndex]) {
       const next = inputIndex + 1
@@ -205,7 +208,7 @@ export default function SpaceshipOne() {
     return trafficLightOff
   }
 
-  // To give sense that something is happening
+  // To give sense that something wrong is happening
   function addShake() {
     errorSFX()
     document.querySelector(".level-one-ship")?.classList.add("shake"); 
