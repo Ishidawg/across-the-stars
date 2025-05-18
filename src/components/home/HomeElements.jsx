@@ -5,15 +5,14 @@ import useSound from 'use-sound';
 import { useEffect } from 'react';
 
 // Sounds
-import backgroundSoundtrack from "../../assets/sound/soundtrack/background.mp3"
+import titleScreenSoundtrack from "../../assets/sound/soundtrack/title-screen.mp3"
 import startButton from "../../assets/sound/soundeffects/start-button.mp3"
 
 
 export default function HomeElements() {
 
-  const [play, { stop }] = useSound(backgroundSoundtrack, { volume: 0.2, loop: true });
+  const [play, { stop }] = useSound(titleScreenSoundtrack, { volume: 0.2, loop: true });
   const [start] = useSound(startButton, { volume: 0.5 })
-
 
   useEffect(() => {
     play()

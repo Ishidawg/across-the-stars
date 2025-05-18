@@ -25,9 +25,15 @@ import Dialog from "./common/Dialog"
 import Character from "../../assets/png/dialog/level_one/serene.png";
 import Arrow from "../../assets/png/dialog/level_one/flecha-roxa.png";
 
+// Sounds
+import errorSound from "@assets/sound/soundeffects/error-2.mp3"
+import levelSoundtrack from "@assets/sound/soundtrack/level-one.mp3"
+
 // Others
 import Typography from "./common/Typography"
 import CustomImage from "./common/CustomImage"
+import useSound from "use-sound"
+import { useLocation } from "react-router"
 
 const BUTTONS = [
   { id: 'small-1', normal: smallButton, pressed: smallButtonClick },
@@ -50,12 +56,31 @@ export default function SpaceshipOne() {
 
   const [isDialogOpen, setDialogOpen] = useState(true)
 
+  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.2, loop: true });
+  const [errorSFX] = useSound(errorSound, { volume: 0.5 })
+
+  const location = useLocation(); // need this to know if route changes, so I can stop music
+
   const text = [
     "Olá viajante! Você precisa de velocidade para chegar ao próximo planeta e seguir sua busca pelo jogo lendário!",
     "Em nosso painel temos vários botões, uma alavanca e um semáforo, para conseguir velocidade você precisa ser bom de memória!",
     "Quando o jogo começar, os botões vão piscar em uma ordem, aperte-os na ordem certa e puxe a alavanca quando o semáforo estiver verde! Faça isso 3 vezes!",
     "Boa sorte em sua jornada! Estou torcendo por você!"
   ]
+
+  useEffect(() => {
+    play()
+
+    // return means if the componente "unmounts" or smth like return itself
+    return () => stop()
+  }, [play, stop]); // need to add dependencies so the soundtrack can start, I don't know why yet tho
+
+  useEffect(() => {
+    play()
+
+    // return means if the componente "unmounts" or smth like return itself
+    return () => stop()
+  }, [location.pathname]);
 
   useEffect(() => {
     !isDialogOpen && startRound()
@@ -182,10 +207,12 @@ export default function SpaceshipOne() {
 
   // To give sense that something is happening
   function addShake() {
+    errorSFX()
     document.querySelector(".level-one-ship")?.classList.add("shake"); 
   }
 
   function addShakeError() {
+    errorSFX()
     document.querySelector(".level-one-ship")?.classList.add("shake-error"); 
   }
 
