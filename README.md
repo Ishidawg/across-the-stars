@@ -7,6 +7,10 @@ Across the Starts é um jogo interativo onde o jogador ajuda uma menina a estabi
 
 ---
 
+## OLD README -  NEEDS UPDATE!
+
+---
+
 ## 🎮 Objetivo do Jogo
 
 A missão é simples, mas desafiadora: *estabilizar a nave* por meio da alavanca e semáforo para que a menina consiga alcançar a lua.

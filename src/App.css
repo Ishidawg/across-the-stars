@@ -1,0 +1,367 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  /* overflow: hidden; */
+}
+
+:root {
+  --white-primary: hsl(243, 34%, 87%);
+  --white-brightness: hsla(243, 33%, 87%, 0.150);
+  --purple-bg: hsl(244, 48%, 30%);
+  --purple-bg-hover: hsl(244, 48%, 35%);
+}
+
+/* Home */
+
+.home-container {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+  filter: drop-shadow(4px 8px 15px hsla(0, 0%, 2%, 0.300));
+}
+
+.home-container img {
+  image-rendering: pixelated;
+  width: 320px;
+}
+
+.home-container h1 {
+  color: var(--white-primary);
+  font-size: 6.4rem;
+  animation: spacing-letters 2.5s ease infinite;
+}
+
+/* Game Text Animation */
+@keyframes spacing-letters {
+  0% { letter-spacing: 0; }
+  50% { letter-spacing: 2px; }
+  100% { letter-spacing: 0; }
+}
+
+.home-container div {
+  position: relative;
+  bottom: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.home-container button {
+  max-width: 250px;
+  text-transform: uppercase;
+  font-size: 4.2rem;
+  padding: 1.0rem 3.0rem;
+  margin: 1rem;
+  background-color: var(--purple-bg);
+  color: var(--white-primary);
+  border-radius: 0.8rem;
+  border: 2px solid var(--white-primary);
+  transition: all .4s ease;
+}
+
+.home-container button:hover {
+  transform: translateY(-5px);
+  background-color: var(--purple-bg-hover);
+  cursor: pointer;
+  box-shadow: 0 0 18px 4px var(--white-brightness);
+}
+
+@media (max-width: 380px)  {
+  .home-container h1  {
+      font-size: 5.2rem;
+  }
+}
+
+/* LevelOne */
+
+.level-one-container {
+  height: 100dvh;
+}
+
+.spaceship {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.level-one-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-one-controls img {
+  width: 180px;
+}
+
+.level-one-controls {
+  position: relative;
+  top: 20%;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.level-one-controls .traffic-light {
+  max-width: 140px;
+  position: relative;
+  top: 40px;
+}
+
+.level-one-controls .lever img {
+  max-width: 120px;
+  position: relative;
+  top: 20px;
+}
+
+.level-one-buttons img {
+  max-width: 60px;
+  margin: -5px;
+  
+  /* Super gambiarra PQP kkkkkkk */
+  /* transform: rotate(-90deg); */
+}
+
+.level-one-buttons {
+  position: relative;
+  top: 40px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  /* Super gambiarra PQP kkkkkkk */
+  /* transform: rotate(90deg); */
+}
+
+.level-one-buttons .small {
+  display: flex;
+}
+
+.level-one-buttons .small div:last-child {
+  position: relative;
+  right: 0;
+}
+
+.level-one-buttons .medium {
+  position: relative;
+  left: 5px;
+  display: flex;
+}
+
+.level-one-buttons .medium div:last-child {
+  position: relative;
+  left: 8px;
+}
+
+.level-one-buttons .large {
+  position: relative;
+  left: 10px;
+  display: flex;
+}
+
+.level-one-buttons .large div:last-child {
+  position: relative;
+  left: 16px;
+}
+
+@media (max-width: 500px)  {
+  .level-one-controls {
+    position: relative;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .level-one-controls .traffic-light {
+    position: relative;
+    left: 8px;
+  }
+
+  .level-one-buttons {
+    position: relative;
+    right: 8px;
+  }
+
+  .dialog {
+    width: 100%;
+  }
+}
+
+.dialog-dim {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(87, 199, 133, 0) 20%, rgb(0, 0, 0) 100%);
+}
+
+.dialog {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+  gap: 1rem;
+
+  max-width: 90%;
+  max-height: 60%;
+
+  color: var(--white-primary);
+  background-color: var(--purple-bg);
+
+  border: 4px solid var(--purple-bg-hover);
+  border-radius: 1rem;;
+
+  overflow: hidden;
+}
+
+.dialog::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: linear-gradient(180deg, rgba(87, 199, 133, 0) 50%, rgba(0, 0, 0, 0.614) 100%);
+  
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.dialog section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog h1 {
+  font-size: 2.8rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.dialog div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dialog .arrow {
+  width: 4rem;
+  margin: 1rem;
+}
+
+.dialog p {
+  font-size: 2.2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: justify;
+  white-space: normal;
+  padding: 1rem;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake {
+  overflow: hidden;
+  animation: shake 0.4s ease-in-out infinite;
+}
+
+.shake-error {
+  filter: hue-rotate(90deg);
+  overflow: hidden;
+  animation: shake 0.4s ease-in-out infinite;
+}
+
+@keyframes hotlineMiami {
+  from {
+    transform: translate(-55%, -55%);
+  } to {
+      transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px hsl(309, 100%, 61%), 0 0 10px hsl(309, 100%, 61%), 0 0 20px hsl(309, 100%, 61%), 0 0 30px hsl(309, 100%, 61%);
+  }
+  100% {
+    text-shadow: 0 0 10px hsl(309, 100%, 61%), 0 0 20px hsl(309, 100%, 61%), 0 0 30px hsl(309, 100%, 61%), 0 0 50px hsl(309, 100%, 61%);
+  }
+}
+
+.typography {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 4em;
+
+  background-color: hsla(0, 0%, 0%, 0.65);
+
+  z-index: 1;
+  overflow: hidden;
+
+  transition: all 0.5s ease;
+}
+
+.typography h1:first-child {
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: hsl(309, 100%, 61%);
+  text-shadow: 0 0 5px hsl(309, 100%, 61%), 0 0 10px hsl(309, 100%, 61%), 0 0 20px hsl(309, 100%, 61%), 0 0 30px hsl(309, 100%, 61%);
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
+
+.typography h1:last-child {
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-52%, -52%);
+
+  
+  text-shadow: 0 0 2px hsl(196, 100%, 61%), 0 0 4px hsl(196, 100%, 61%), 0 0 10px hsl(196, 100%, 61%), 0 0 15px hsl(196, 100%, 61%);
+  color: hsl(196, 100%, 61%);
+  -webkit-text-stroke: 2px hsl(196, 93%, 24%);
+  animation: hotlineMiami 1s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
