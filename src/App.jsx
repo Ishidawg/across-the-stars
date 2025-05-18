@@ -4,6 +4,7 @@ import Star from './components/particles/Star'
 
 function App() {
 
+  
   return (
     <div>
       <Star />

@@ -295,6 +295,12 @@
   animation: shake 0.4s ease-in-out infinite;
 }
 
+.shake-error {
+  filter: hue-rotate(90deg);
+  overflow: hidden;
+  animation: shake 0.4s ease-in-out infinite;
+}
+
 @keyframes hotlineMiami {
   from {
     transform: translate(-55%, -55%);

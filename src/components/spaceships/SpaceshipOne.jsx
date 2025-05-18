@@ -45,6 +45,7 @@ export default function SpaceshipOne() {
   const [inputIndex, setInputIndex] = useState(0)
   const [light, setLight] = useState('off')
   const [score, setScore] = useState(0)
+  const [message, setMessage] = useState("")
   const intervalRef = useRef(null)
 
   const [isDialogOpen, setDialogOpen] = useState(true)
@@ -64,6 +65,7 @@ export default function SpaceshipOne() {
   function startRound() {
     setLight('off')
     setScore(0)
+    setMessage("")
     removeShake()
     setTimeout(() => startSequence(), 1000 ) // Give time to player focus on the buttons
   }
@@ -77,6 +79,7 @@ export default function SpaceshipOne() {
 
   function showSequence(sequence) {
     removeShake()
+    setMessage("")
     sequence.forEach((btnId, sequenceIndex) => {
       setTimeout(() => {
         setFlash(btnId)
@@ -94,15 +97,16 @@ export default function SpaceshipOne() {
     if (id === sequence[inputIndex]) {
       const next = inputIndex + 1
       if (next === sequence.length) {
-        console.log('vc acertou sequnciia')
+        // Pass sequence
         setPhase('lever')
         startTrafficLightCycle()
       } else {
         setInputIndex(next)
       }
     } else {
-      console.log('vc perdeu sequencia')
-      resetGame()
+      // Error sequence
+      addShakeError()
+      setTimeout(() => resetGame(), 400 ) // Need the timeout, otherwise shake dont work
     }
   }
 
@@ -123,16 +127,18 @@ export default function SpaceshipOne() {
       const newScore = score + 1
       setScore(newScore)
       addShake()
-      console.log(`Ponto! Score: ${newScore}`)
+      setMessage(`Boa! Score: ${newScore}`)
       if (newScore >= 3) {
-        console.log('Parabens vc venceu o jogo!')
+        setMessage('You Win!')
         resetGame()
         return
       }
       nextSequence()
     } else {
-      console.log('Alavanca acionada fora do verde! score resetado!')
-      resetGame()
+      // Push lever on wrong sign
+      addShakeError()
+      setTimeout(() => resetGame(), 400 ) // Need the timeout, otherwise shake dont work
+
     }
   }
 
@@ -179,14 +185,19 @@ export default function SpaceshipOne() {
     document.querySelector(".level-one-ship")?.classList.add("shake"); 
   }
 
+  function addShakeError() {
+    document.querySelector(".level-one-ship")?.classList.add("shake-error"); 
+  }
+
   function removeShake() {
-    document.querySelector(".level-one-ship")?.classList.remove("shake"); 
+    document.querySelector(".level-one-ship")?.classList.remove("shake");
+    document.querySelector(".level-one-ship")?.classList.remove("shake-error"); 
   }
 
   // I have tried to improve the code on map to not be so verbose, but I suck at coding so...
   return (
     <>
-      <Typography text={"You WIN!"}/>
+      {message && <Typography text={message} />}
       <div className="spaceship level-one-ship" style={spaceshipStyle}>
         <div className="level-one-controls">
           <img className="traffic-light" src={lightSrc()} />
