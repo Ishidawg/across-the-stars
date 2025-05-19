@@ -11,6 +11,7 @@
 
   cursor: url("./assets/svg/cursor.svg"), pointer;
   text-rendering: optimizeLegibility;
+  user-select: none;
 }
 
 html {

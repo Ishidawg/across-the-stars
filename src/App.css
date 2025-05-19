@@ -4,6 +4,7 @@
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
   /* overflow: hidden; */
+  user-select: none;
 }
 
 :root {
@@ -364,4 +365,79 @@
   -webkit-text-stroke: 2px hsl(196, 93%, 24%);
   animation: hotlineMiami 1s ease-in-out infinite alternate;
   transition: all 0.5s ease;
+}
+
+/* To work on screen higher than 1920p - 1440p and 4k */
+@media (min-width: 1921px) {
+  .level-one-controls img {
+    width: 480px;
+  }
+
+  .level-one-controls {
+    position: relative;
+    top: 22%;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+  }
+
+  /* +20 - default is 140px */
+  .level-one-controls .traffic-light {
+    max-width: 180px;
+    position: relative;
+    top: 40px;
+  }
+
+  .level-one-controls .lever img {
+    max-width: 160px;
+    position: relative;
+    top: 20px;
+  }
+
+  .level-one-buttons img {
+    max-width: 80px;
+    margin: -5px;
+  }
+
+  /* .level-one-buttons {
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .level-one-buttons .small {
+    display: flex;
+  }
+
+  .level-one-buttons .small div:last-child {
+    position: relative;
+    right: 0;
+  }
+
+  .level-one-buttons .medium {
+    position: relative;
+    left: 5px;
+    display: flex;
+  }
+
+  .level-one-buttons .medium div:last-child {
+    position: relative;
+    left: 8px;
+  }
+
+  .level-one-buttons .large {
+    position: relative;
+    left: 10px;
+    display: flex;
+  }
+
+  .level-one-buttons .large div:last-child {
+    position: relative;
+    left: 16px;
+  } */
 }
