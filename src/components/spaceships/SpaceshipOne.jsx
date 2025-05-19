@@ -54,6 +54,7 @@ export default function SpaceshipOne() {
   const [score, setScore] = useState(0)
   const [message, setMessage] = useState("")
   const intervalRef = useRef(null)
+  const messageTimeoutRef = useRef(null)
 
   const [isDialogOpen, setDialogOpen] = useState(true)
 
@@ -86,7 +87,10 @@ export default function SpaceshipOne() {
 
   useEffect(() => {
     !isDialogOpen && startRound()
-    return () => clearInterval(intervalRef.current)
+    return () => {
+      clearInterval(intervalRef.current)
+      clearInterval(messageTimeoutRef.current)
+    }
   }, [isDialogOpen])
 
   function startRound() {
@@ -154,14 +158,13 @@ export default function SpaceshipOne() {
     if (light === 'green') {
       const newScore = score + 1
       setScore(newScore)
-      addShake()
       setMessage(`Boa! Score: ${newScore}`)
       if (newScore >= 3) {
         setMessage('You Win!')
-        resetGame()
+        setTimeout(() => resetGame(), 1250); // Hold to resetGame, means the display will holds on screen more time
         return
       }
-      nextSequence()
+      setTimeout(() => nextSequence(), 1250) // Hold to start a new sequence, means the display will holds on screen more time
     } else {
       // Push lever on wrong sign
       addShakeError()
@@ -175,7 +178,7 @@ export default function SpaceshipOne() {
     setLight('off')
     const newSequence = Array.from({ length: 3 }, () => BUTTONS[Math.floor(Math.random() * BUTTONS.length)].id)
     setSequence(newSequence)
-    setTimeout(() => showSequence(newSequence), 500)
+    setTimeout(() => showSequence(newSequence), 600)
   }
 
   function resetGame() {
@@ -198,7 +201,7 @@ export default function SpaceshipOne() {
 
   // Create this one to not repeat the same line for each button
   function flashButtons(id) {
-    return { filter: flash === id ? 'brightness(1.5)' : 'brightness(1)' }
+    return { filter: flash === id ? 'brightness(1.8)' : 'brightness(1)' }
   }
 
   function lightSrc() {
@@ -209,10 +212,10 @@ export default function SpaceshipOne() {
   }
 
   // To give sense that something wrong is happening
-  function addShake() {
-    errorSFX()
-    document.querySelector(".level-one-ship")?.classList.add("shake"); 
-  }
+  // function addShake() {
+  //   errorSFX()
+  //   document.querySelector(".level-one-ship")?.classList.add("shake"); 
+  // }
 
   function addShakeError() {
     errorSFX()
