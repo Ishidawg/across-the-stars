@@ -4,7 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import LevelOne from './pages/LevelOne.jsx'
-import LevelTwo from './pages/levelTwo.jsx'
+import LevelTwo from './pages/LevelTwo.jsx'
+import Final from './pages/Final.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
           <Route index element={<App />} />
           <Route path='level_one' element={<LevelOne />} />
           <Route path='level_two' element={<LevelTwo />} />
+          <Route path='final' element={<Final />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>
