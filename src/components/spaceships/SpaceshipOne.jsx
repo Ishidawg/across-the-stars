@@ -34,7 +34,7 @@ import levelSoundtrack from "@assets/sound/soundtrack/level-one.mp3"
 import Typography from "./common/Typography"
 import CustomImage from "./common/CustomImage"
 import useSound from "use-sound"
-import { useLocation } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 
 const BUTTONS = [
   { id: 'small-1', normal: smallButton, pressed: smallButtonClick },
@@ -46,6 +46,9 @@ const BUTTONS = [
 ]
 
 export default function SpaceshipOne() {
+
+  const navigate = useNavigate()
+
   const [sequence, setSequence] = useState([])
   const [phase, setPhase] = useState('idle')
   const [flash, setFlash] = useState(null)
@@ -160,11 +163,17 @@ export default function SpaceshipOne() {
       setScore(newScore)
       setMessage(`Boa! Score: ${newScore}`)
       if (newScore >= 3) {
-        setMessage('You Win!')
-        setTimeout(() => resetGame(), 1250); // Hold to resetGame, means the display will holds on screen more time
+        // Hold to resetGame, means the display will holds on screen more time
+        setTimeout(() => {
+          setMessage('Você conseguiu!');
+          setTimeout(() => {
+            setMessage('Partindo em direção ao segundo mundo!');
+            setTimeout(() => navigate("/level_two"), 1000);
+          }, 1000);
+        }, 1000);
         return
       }
-      setTimeout(() => nextSequence(), 1250) // Hold to start a new sequence, means the display will holds on screen more time
+      setTimeout(() => nextSequence(), 1000) // Hold to start a new sequence, means the display will holds on screen more time
     } else {
       // Push lever on wrong sign
       addShakeError()

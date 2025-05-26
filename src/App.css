@@ -175,30 +175,6 @@
   left: 16px;
 }
 
-@media (max-width: 500px)  {
-  .level-one-controls {
-    position: relative;
-    right: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .level-one-controls .traffic-light {
-    position: relative;
-    left: 8px;
-  }
-
-  .level-one-buttons {
-    position: relative;
-    right: 8px;
-  }
-
-  .dialog {
-    width: 100%;
-  }
-}
-
 .dialog-dim {
   position: absolute;
   bottom: 0;
@@ -367,8 +343,305 @@
   transition: all 0.5s ease;
 }
 
+/* Level two */
+
+.level-two-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.fire {
+  width: 150px;
+  margin-bottom: 12px;
+}
+
+.iron-fence {
+  position: fixed;
+  width: 238px;
+  margin-bottom: 12px;
+}
+
+.blow-air {
+  position: fixed;
+  margin-left: 20em;
+  width: 25em;
+  filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+}
+
+.countdown {
+  z-index: 1;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--white-primary);
+
+  font-size: 20rem;
+}
+
+.countdown-container h1:first-child {
+  color: hsl(309, 100%, 61%);
+  text-shadow: 0 0 5px hsl(309, 100%, 61%), 0 0 10px hsl(309, 100%, 61%), 0 0 20px hsl(309, 100%, 61%), 0 0 30px hsl(309, 100%, 61%);
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
+
+/* RESPONSIVE LAYOUT - ALWAYS ON BOTTOM! */
+
+@media (min-width: 360px) {
+  .fire {
+    width: 160px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 360px) and (min-height: 760px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 275px;
+    margin-bottom: 20px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 372px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 240px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 285px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 384px) and (min-height: 854px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 390px) and (min-height: 844px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 400px) {
+  .fire {
+    width: 180px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 310px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 400px) {
+  .fire {
+    width: 180px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 320px;
+    margin-bottom: 28px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (max-width: 500px)  {
+  .level-one-controls {
+    position: relative;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .level-one-controls .traffic-light {
+    position: relative;
+    left: 8px;
+  }
+
+  .level-one-buttons {
+    position: relative;
+    right: 8px;
+  }
+
+  .dialog {
+    width: 100%;
+  }
+}
+
+@media (min-width: 810px) and (min-height: 1080px) {
+  .fire {
+    width: 200px;
+    margin-bottom: 50px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 370px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 26em;
+    margin-bottom: 2rem;
+    width: 30em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+}
+
+@media (min-width: 1920px) {
+  .fire {
+    width: 220px;
+    margin-bottom: 40px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 370px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 26em;
+    margin-bottom: 2rem;
+    width: 30em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+}
+
 /* To work on screen higher than 1920p - 1440p and 4k */
-@media (min-width: 1921px) {
+@media (min-width: 1928px) {
   .level-one-controls img {
     width: 480px;
   }
@@ -401,43 +674,22 @@
     margin: -5px;
   }
 
-  /* .level-one-buttons {
-    position: relative;
-    top: 40px;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+  .fire {
+    width: 300px;
+    margin-bottom: 12px;
   }
 
-  .level-one-buttons .small {
-    display: flex;
+  .iron-fence {
+    position: fixed;
+    width: 498px;
+    margin: -10px;
   }
 
-  .level-one-buttons .small div:last-child {
-    position: relative;
-    right: 0;
+  .blow-air {
+    position: fixed;
+    margin-left: 32em;
+    width: 35em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
   }
-
-  .level-one-buttons .medium {
-    position: relative;
-    left: 5px;
-    display: flex;
-  }
-
-  .level-one-buttons .medium div:last-child {
-    position: relative;
-    left: 8px;
-  }
-
-  .level-one-buttons .large {
-    position: relative;
-    left: 10px;
-    display: flex;
-  }
-
-  .level-one-buttons .large div:last-child {
-    position: relative;
-    left: 16px;
-  } */
 }
+
