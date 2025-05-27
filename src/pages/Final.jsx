@@ -4,6 +4,7 @@ import Dialog from "../components/spaceships/common/Dialog"
 import Character from "/src/assets/png/final/iara.png"
 import Arrow from "/src/assets/png/dialog/level_one/flecha-roxa.png"
 import console from "/src/assets/png/videogames/console.png"
+import storeBackground from "/src/assets/png/final/loja.png"
 import { useEffect, useState } from "react"
 
 // Sounds
@@ -48,7 +49,7 @@ export default function Final() {
   const style = {
     height: "100dvh",
     overflow: "hidden",
-    backgroundImage: "url('/src/assets/png/final/loja.png')",
+    backgroundImage: `url(${storeBackground})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
