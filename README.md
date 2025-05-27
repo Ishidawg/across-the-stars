@@ -1,118 +1,101 @@
-# 🌠 Across the Starts
+# 🌠 Across the Stars · [Jogue Online 🚀](https://across-the-stars.vercel.app)
+
+
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![tsParticles](https://img.shields.io/badge/tsParticles-EF0179?style=for-the-badge&logo=tsparticles&logoColor=white)
+![useSound](https://img.shields.io/badge/useSound-EF0179?style=for-the-badge&logo=usesound&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
 <p align="center">
-  <img src="https://github.com/Ishidawg/across-the-starts/blob/main/public/svg/asteroid-milkshake.svg" alt="Asteroid Milkshake" width="300"/>
+  <img src="https://github.com/Ishidawg/across-the-stars/blob/main/src/assets/svg/rocket/spacecat.svg?raw=true" alt="Space Cat" width="300"/>
 </p>
 
-Across the Starts é um jogo interativo onde o jogador ajuda uma menina a estabilizar uma nave para alcançar a lua. O projeto foi desenvolvido com Next.js e Framer Motion, utilizando lógica de estados, shaders e animações suaves.
-
----
-
-## OLD README -  NEEDS UPDATE!
+**Across the Stars** é um jogo interativo onde o jogador embarca em uma jornada pela galáxia, viajando de mundo em mundo atrás de cartuchos de jogos raros. A aventura combina minigames desafiadores, escolhas estratégicas e uma narrativa envolvente, tudo desenvolvido com Vite + JS + React.
 
 ---
 
 ## 🎮 Objetivo do Jogo
 
-A missão é simples, mas desafiadora: *estabilizar a nave* por meio da alavanca e semáforo para que a menina consiga alcançar a lua.
+A missão do jogador é explorar diferentes mundos, completar desafios e coletar cartuchos especiais para montar seu console dos sonhos. Em cada mundo, há uma mecânica diferente para superar:
+
+- Na **Lua**, estabilize o foguete através de um minigame de memória e controle do semáforo.
+- No **Mundo Gelo**, mantenha a nave aquecida ativando o soprador da fornalha para sobreviver ao frio extremo.
+- Após completar os mundos, visite a loja da Iara para comprar um console especial com os cartuchos coletados.
 
 ---
 
-## 👩‍🚀 Como Funciona
+## 🌌 Mundos (e um satélite) e Mecânicas
 
+### 🌙 Lua — Minigame de Memória e Controle da Nave
 
-O jogo é dividido em *cenas interativas*, onde o jogador:
-- Interage com a alavanca (Lever.tsx)
-- Ativa luzes de controle (TrafficLights.tsx)
-- Usa painéis com botões (ButtonsPanel.tsx)
-- Acompanha os diálogos e transições entre os eventos (dialog/index.tsx, TransitionLayout.tsx)
+- O jogador deve apertar os botões na sequência que piscam, testando a memória e reflexos.
+- Após acertar a sequência, puxe a alavanca para parar o semáforo no verde e estabilizar o foguete.
+- Ao vencer, escolha um dos dois cartuchos de jogo disponíveis para continuar a aventura.
 
-🔒 A *alavanca de decolagem* só pode ser ativada quando todos os 6 botões do painel estiverem ligados, sinalizados pelo semáforo verde.
+### ❄️ Mundo Gelo — Sobrevivendo ao Frio Extremo
 
-📶 O *semáforo* serve como um indicador visual de segurança para a decolagem.
+- O ambiente está congelante, e a nave precisa manter a fornalha acesa para não perder calor.
+- O jogador ativa o soprador da fornalha apertando um botão repetidamente para manter o calor.
+- Ao final, escolha entre dois novos cartuchos diferentes dos da Lua.
 
-📱 O layout é responsivo e se adapta ao tamanho da tela para manter a experiência fluida no celular e no desktop.
+### 🚠 Teleférico e Loja da Iara
 
+- Pegue um teleférico que leva até a loja da Iara.
+- Na loja, compre um console especial que só é vendido ali, usando os cartuchos coletados.
+- Aparecem os dois cartuchos que o jogador escolheu durante a jornada.
 
 ---
+
 
 ## 🔧 Tecnologias Usadas
 
-- *Next.js* – Framework React para aplicações web
-- *TypeScript* – Tipagem forte para maior segurança
-- *Framer Motion* – Animações fluidas e naturais
-- *GLSL Shaders* – Para efeitos de estrelas em movimento (Stars.tsx e StarsSpeeding.tsx)
+| Tecnologia     | Descrição                                                      |
+| -------------- | -------------------------------------------------------------- |
+| **Vite**       | Bundler rápido e leve para projetos web                        |
+| **React**      | Biblioteca JavaScript para construir UI                        |
+| **JavaScript** | Linguagem de programação                                       |
+| **React Router** | Biblioteca de roteamento para aplicações React               |
+| **tsParticles**| Biblioteca para partículas animadas com suporte a TypeScript   |
+| **useSound**   | React Hook para adicionar efeitos sonoros (via `npm`)          |
+| **CSS3**       | Linguagem de estilo                                            |
 
----
 
-## 🎨 Design no Figma
-
-Você pode conferir o design completo do projeto no Figma:
-
-👉 Protótipo no Figma – [[Across The Stars](https://www.figma.com/design/VkxgO8PCUhGcEOAeKtKzsS/Across-The-Stars?m=auto&t=cq4iFGPb0loNX4wO-1)]
-
----
-
-## 🔍 Funcionalidades
-
--   ✅ Interface responsiva com layout fluido
-    
--   🎮 Interações com painéis, luzes e alavancas
-    
--   💬 Sistema de diálogo dinâmico por cena
-    
--   🚦 Validação de estado antes da decolagem
-    
--   🌌 Animações de estrelas com shaders GLSL
-    
--   🔄 Transições suaves entre cenas com Framer Motion
 ---
 
 ## 🧠 Lógica Principal
 
-- O estado da nave é controlado por interações do jogador
-- Cada interação modifica a cena ou altera elementos visuais
-- A estabilização depende de ativar corretamente cada componente da cabine
-- O botão de avanço (SceneButton.tsx) só aparece quando todos os elementos da cena foram ativados com sucesso
+- O estado do jogo avança conforme o jogador interage corretamente com cada minigame.
+- A escolha dos cartuchos influencia a narrativa e o inventário do jogador.
+- A progressão acontece cena a cena, com transições suaves usando Framer Motion.
+- O layout é responsivo para funcionar bem tanto em desktop quanto em dispositivos móveis.
 
 ---
 
-## 🧩 Estrutura do Projeto
+## 🎨 Design e Protótipo
 
-```bash
+Confira o protótipo visual completo no Figma:
 
-└── /src
-    └── app
-        └── components
-            ├── animations/      # Animações e efeitos visuais
-            ├── controls/        # Botões, alavancas e painéis
-            ├── dialog/          # Balões de diálogo e textos
-            ├── shaders/         # Efeitos com shaders (como as estrelas)
-            └── spaceship/
-                └── page.tsx     # Página da nave (cena específica)
-        ├── favicon.ico          # Ícone do site
-        ├── globals.css          # Estilização global
-        ├── layout.tsx           # Layout raiz do App Router
-        └── page.tsx             # Página inicial do projeto
-└── /public
-    ├── png/                    # Imagens em PNG usadas no projeto
-    └── svg/                    # Imagens em SVG usadas no projeto
-```
+👉 [Across The Stars – Protótipo no Figma](https://www.figma.com/design/NLQvkvYmRuZw3jmuTYmMow/Across-the-Stars?node-id=63-63&t=n8NUqq0Ov1G1wMR8-0)
+
+---
 
 ## 🌀 Fluxo do Jogo
 
-1.  O jogador começa na *Cena 1* e interage com o painel.
-    
-2.  Os elementos ativados corretamente liberam o botão de troca de cena.
-    
-3.  A troca é feita com useRouter e animação com Framer Motion.
-    
-4.  Diálogos orientam o jogador e são carregados dinamicamente de data.ts.
-    
-5.  A missão é concluída com a decolagem da nave.
+1. Jogador começa na Lua, enfrenta o minigame de memória e controla o semáforo.
+2. Escolhe um cartucho entre duas opções.
+3. Viaja para o Mundo Gelo e mantém a nave aquecida ativando a fornalha.
+4. Escolhe outro cartucho, diferente do primeiro.
+5. Usa o teleférico para chegar até a loja da Iara.
+6. Compra o console especial e visualiza os cartuchos coletados.
+7. Finaliza a jornada com uma nave pronta para explorar o universo.
 
+---
 ## 💬 Diálogos Dinâmicos
 
-Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. Onde o initialDialog é um array de string:
+Os diálogos são definidos como objetos de texto com id, personagem e texto. Eles são usados para orientar o jogador e dar vida à narrativa. Nesse exemplo, initialDialog é um array de strings que representa as falas sequenciais:
 
 Exemplo:
 ```ts
@@ -128,36 +111,16 @@ Exemplo:
 ```
 Esses diálogos funcionam como um pequeno guia para o jogador.
 
-## 📦 Exemplo com Framer Motion
-
-O projeto usa transições animadas como esta:
-
-```tsx
-<motion.div initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-> <CenaAtual />
-</motion.div>
-```
 
 ## 🛠️ Como Rodar Localmente
 
-1.  Clone o repositório:
-    ```bash
-     git clone https://github.com/Ishidawg/across-the-starts
-    ```
-2. Acesse a pasta do projeto:
-    ```bash
-   cd across-the-starts
-   ``` 
-3.  Instale as dependências:
-    ```bash
-    npm install
-    ```
-4. Rode o projeto:
-   ``` bash
-    npm run dev
-    ```
+```bash
+git clone https://github.com/Ishidawg/across-the-stars
+cd across-the-stars
+npm install
+npm run dev
+```
+
 ## 👩‍💻 Autores
 -   Cíntia – [[@cintiambr](https://github.com/cintiambr)]
     
@@ -166,7 +129,6 @@ O projeto usa transições animadas como esta:
 -  Willian – [[@Ishidawg](https://github.com/Ishidawg)]
     
 -   Yasmim – [[@yasmimlb](https://github.com/yasmimlb)]
-
 
 ## 🌕 Fim da Jornada
 
