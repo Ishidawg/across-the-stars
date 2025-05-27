@@ -4,6 +4,7 @@
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
   /* overflow: hidden; */
+  user-select: none;
 }
 
 :root {
@@ -174,30 +175,6 @@
   left: 16px;
 }
 
-@media (max-width: 500px)  {
-  .level-one-controls {
-    position: relative;
-    right: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .level-one-controls .traffic-light {
-    position: relative;
-    left: 8px;
-  }
-
-  .level-one-buttons {
-    position: relative;
-    right: 8px;
-  }
-
-  .dialog {
-    width: 100%;
-  }
-}
-
 .dialog-dim {
   position: absolute;
   bottom: 0;
@@ -365,3 +342,494 @@
   animation: hotlineMiami 1s ease-in-out infinite alternate;
   transition: all 0.5s ease;
 }
+
+/* Level two */
+
+.level-two-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.fire {
+  width: 150px;
+  margin-bottom: 12px;
+}
+
+.iron-fence {
+  position: fixed;
+  width: 238px;
+  margin-bottom: 12px;
+}
+
+.blow-air {
+  position: fixed;
+  margin-left: 20em;
+  width: 25em;
+  filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+}
+
+.countdown {
+  z-index: 1;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--white-primary);
+
+  font-size: 20rem;
+}
+
+.countdown-container h1:first-child {
+  color: hsl(309, 100%, 61%);
+  text-shadow: 0 0 5px hsl(309, 100%, 61%), 0 0 10px hsl(309, 100%, 61%), 0 0 20px hsl(309, 100%, 61%), 0 0 30px hsl(309, 100%, 61%);
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
+
+.final-container {
+  /* height: 100dvh;
+  overflow: hidden;
+  background-image: url("/src/assets/png/final/loja.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  image-rendering: pixelated;
+}
+
+.choose-container {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  z-index: 2;
+  overflow: hidden;
+
+  transition: all 250ms ease;
+}
+
+.choose-container article {
+  margin-bottom: 1rem;
+}
+
+.choose-container article h1 {
+  font-size: 4.2rem;
+  color: var(--white-primary);
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.choose-container main h1 {
+  font-size: 3.2rem;
+  color: var(--white-primary);
+  filter: drop-shadow(2px 2px 2px var(--purple-bg-hover));
+}
+
+.choose-container main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.choose-container img {
+  width: 300px;
+  transition: all 250ms ease;
+}
+
+.choose-container img:hover {
+  filter: drop-shadow(4px 4px 10px var(--purple-bg-hover));
+  cursor: pointer;
+  zoom: 1.2;
+}
+
+.car-cable-container {
+  height: 100dvh;
+  background-image: url("/src/assets/png/final/teleferico.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.final-title {
+  font-size: 6.2rem;
+  color: var(--white-primary);
+  animation: wave 1.5s ease-in-out infinite;
+
+  filter: drop-shadow(2px 2px 2px var(--purple-bg-hover));
+  z-index: 1;
+}
+
+.final-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 49.9%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.300);
+  /* backdrop-filter: blur(6px); */
+  pointer-events: none;
+
+  transition: all 20s ease;
+}
+
+.img-final {
+  z-index: 1;
+}
+
+.main-final-images {
+  z-index: 1;
+}
+
+.star-fade {
+  opacity: 0;
+  transition: opacity 5.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star-fade.show {
+  opacity: 1;
+}
+
+
+/* RESPONSIVE LAYOUT - ALWAYS ON BOTTOM! */
+
+@media (max-width: 560px) {
+  .choose-container img {
+    width: 120px;
+    transition: all 250ms ease;
+  }
+
+  .final-title {
+    font-size: 4.2rem;
+  }
+  
+}
+
+@media (min-width: 360px) {
+  .fire {
+    width: 160px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 360px) and (min-height: 760px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 275px;
+    margin-bottom: 20px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 372px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 240px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 285px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 384px) and (min-height: 854px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 390px) and (min-height: 844px) {
+  .fire {
+    width: 120px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 300px;
+    margin-bottom: 22px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 400px) {
+  .fire {
+    width: 180px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 310px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (min-width: 400px) {
+  .fire {
+    width: 180px;
+    margin-bottom: 60px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 320px;
+    margin-bottom: 28px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 22em;
+    margin-bottom: 2rem;
+    width: 25em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+  
+}
+
+@media (max-width: 500px)  {
+  .level-one-controls {
+    position: relative;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .level-one-controls .traffic-light {
+    position: relative;
+    left: 8px;
+  }
+
+  .level-one-buttons {
+    position: relative;
+    right: 8px;
+  }
+
+  .dialog {
+    width: 100%;
+  }
+}
+
+@media (min-width: 810px) and (min-height: 1080px) {
+  .fire {
+    width: 200px;
+    margin-bottom: 50px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 370px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 26em;
+    margin-bottom: 2rem;
+    width: 30em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+}
+
+@media (min-width: 1920px) {
+  .fire {
+    width: 220px;
+    margin-bottom: 40px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 370px;
+    margin-bottom: 34px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 26em;
+    margin-bottom: 2rem;
+    width: 30em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+}
+
+/* To work on screen higher than 1920p - 1440p and 4k */
+@media (min-width: 1928px) {
+  .level-one-controls img {
+    width: 480px;
+  }
+
+  .level-one-controls {
+    position: relative;
+    top: 22%;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+  }
+
+  /* +20 - default is 140px */
+  .level-one-controls .traffic-light {
+    max-width: 180px;
+    position: relative;
+    top: 40px;
+  }
+
+  .level-one-controls .lever img {
+    max-width: 160px;
+    position: relative;
+    top: 20px;
+  }
+
+  .level-one-buttons img {
+    max-width: 80px;
+    margin: -5px;
+  }
+
+  .fire {
+    width: 300px;
+    margin-bottom: 12px;
+  }
+
+  .iron-fence {
+    position: fixed;
+    width: 498px;
+    margin: -10px;
+  }
+
+  .blow-air {
+    position: fixed;
+    margin-left: 32em;
+    width: 35em;
+    filter: drop-shadow(8px 4px 8px hsla(0, 0%, 0%, 0.5));
+  }
+}
+

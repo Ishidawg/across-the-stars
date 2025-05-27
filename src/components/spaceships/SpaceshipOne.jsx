@@ -45,7 +45,10 @@ const BUTTONS = [
   { id: 'large-2', normal: largeButton, pressed: largeButtonClick }
 ]
 
-export default function SpaceshipOne() {
+export default function SpaceshipOne({ onWin }) {
+
+  // const navigate = useNavigate()
+
   const [sequence, setSequence] = useState([])
   const [phase, setPhase] = useState('idle')
   const [flash, setFlash] = useState(null)
@@ -58,7 +61,7 @@ export default function SpaceshipOne() {
 
   const [isDialogOpen, setDialogOpen] = useState(true)
 
-  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.2, loop: true });
+  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.5, loop: true });
   const [errorSFX] = useSound(errorSound, { volume: 0.5 })
   const [clickSFX] = useSound(clickElementSound, { volume: 0.5 })
 
@@ -160,11 +163,18 @@ export default function SpaceshipOne() {
       setScore(newScore)
       setMessage(`Boa! Score: ${newScore}`)
       if (newScore >= 3) {
-        setMessage('You Win!')
-        setTimeout(() => resetGame(), 1250); // Hold to resetGame, means the display will holds on screen more time
+        // Hold to resetGame, means the display will holds on screen more time
+        setTimeout(() => {
+          setMessage('Você conseguiu!');
+          setTimeout(() => {
+            setMessage('Partindo em direção ao segundo mundo!');
+            if (onWin) onWin()
+            // setTimeout(() => navigate("/level_two"), 1000); now I will pass as a prop to choose a game so...
+          }, 1000);
+        }, 1000);
         return
       }
-      setTimeout(() => nextSequence(), 1250) // Hold to start a new sequence, means the display will holds on screen more time
+      setTimeout(() => nextSequence(), 1000) // Hold to start a new sequence, means the display will holds on screen more time
     } else {
       // Push lever on wrong sign
       addShakeError()
