@@ -9,6 +9,7 @@ import pageSoundtrack from "@assets/sound/soundtrack/carcable.mp3"
 import { useLocation, useNavigate } from "react-router";
 import useSound from "use-sound";
 import { useEffect } from "react";
+import StarTransparent from "../components/particles/StarTransparent";
 
 export default function CarCable() {
   const navigate = useNavigate()
@@ -51,6 +52,7 @@ export default function CarCable() {
           <Dialog dialog={text} image={Character} characterName={"Iara"} arrow={Arrow} onClose={ () => {handleClose()} }/>
         </div>
       </Motion.div>
+      <StarTransparent />
     </>
   )
 }
