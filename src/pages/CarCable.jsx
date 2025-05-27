@@ -1,6 +1,7 @@
 import Dialog from "../components/spaceships/common/Dialog";
 import Arrow from "../assets/png/dialog/level_one/flecha-roxa.png";
 import Character from "/src/assets/png/final/iara.png"
+import { motion as Motion } from "framer-motion"
 
 // Sounds
 import pageSoundtrack from "@assets/sound/soundtrack/carcable.mp3"
@@ -40,9 +41,16 @@ export default function CarCable() {
 
   return(
     <>
-      <div className="car-cable-container">
-        <Dialog dialog={text} image={Character} characterName={"Iara"} arrow={Arrow} onClose={ () => {handleClose()} }/>
-      </div>
+      <Motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0,   opacity: 1 }}
+        exit={{ x: -100, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="car-cable-container">
+          <Dialog dialog={text} image={Character} characterName={"Iara"} arrow={Arrow} onClose={ () => {handleClose()} }/>
+        </div>
+      </Motion.div>
     </>
   )
 }

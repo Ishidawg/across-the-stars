@@ -6,6 +6,7 @@ import Arrow from "/src/assets/png/dialog/level_one/flecha-roxa.png"
 import console from "/src/assets/png/videogames/console.png"
 import storeBackground from "/src/assets/png/final/loja.png"
 import { useEffect, useState } from "react"
+import { motion as Motion } from "framer-motion"
 
 // Sounds
 import pageSoundtrack from "@assets/sound/soundtrack/completed-game.mp3"
@@ -63,38 +64,45 @@ export default function Final() {
   }
   
   return(
-      <div className="final-container" style={style}>
-        <main className="choose-container">
-        {!isDialogOpen && (
-          <>
-            <h1 className="final-title">Jogue os jogos que você encontrou no <br></br>Station Lovetron </h1>
-            <img className="img-final" src={console} onClick={ () => navigate("/")} />
-            <main className="main-final-images">
-              <div>
-                <img className="img-final" src={choice1} />
-                <h1>{choice1Name}</h1>
+      <Motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0,   opacity: 1 }}
+        exit={{ x: -100, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="final-container" style={style}>
+          <main className="choose-container">
+          {!isDialogOpen && (
+            <>
+              <h1 className="final-title">Você completou a jornada e <br></br>conseguiu o Station Lovetron! </h1>
+              <img className="img-final" src={console} onClick={ () => navigate("/")} />
+              <main className="main-final-images">
+                <div>
+                  <img className="img-final" src={choice1} />
+                  <h1>{choice1Name}</h1>
+                </div>
+                <div>
+                  <img className="img-final" src={choice2} />
+                  <h1>{choice2Name}</h1>
+                </div>
+              </main>
+              <div className="final-background" style={{
+                backdropFilter: blur ? "blur(4px)" : "none",
+              }} />
+              <div
+                className={`star-fade ${graduallyOpening ? 'show' : ''}`}
+              >
+                <Star />
               </div>
-              <div>
-                <img className="img-final" src={choice2} />
-                <h1>{choice2Name}</h1>
-              </div>
-            </main>
-            <div className="final-background" style={{
-              backdropFilter: blur ? "blur(4px)" : "none",
-            }} />
-            <div
-              className={`star-fade ${graduallyOpening ? 'show' : ''}`}
-            >
-              <Star />
-            </div>
-          </>
-        )}
-        </main>
-        <Dialog dialog={text} image={Character} characterName={"Iara"} arrow={Arrow} onClose={ () => {
-          setDialogOpen(false)
-          setTimeout(() => setgraduallyOpening(true), 400)
-          setTimeout(() => setBlur(true), 400 + 800)
-          }}/>
-      </div>
+            </>
+          )}
+          </main>
+          <Dialog dialog={text} image={Character} characterName={"Iara"} arrow={Arrow} onClose={ () => {
+            setDialogOpen(false)
+            setTimeout(() => setgraduallyOpening(true), 400)
+            setTimeout(() => setBlur(true), 400 + 800)
+            }}/>
+        </div>
+      </Motion.div>
   )
 }

@@ -32,7 +32,7 @@ export default function HomeElements() {
       <img src={gameLogo} alt="Logo" />
       <div>
         <h1>Across the stars</h1>
-        <NavLink to="/level_one">
+        <NavLink to="/journey">
           <button onClick={ () => {
             stop()
             start()

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Choose from "../components/spaceships/Choose";
 import Star from "../components/particles/Star";
+import { motion as Motion } from "framer-motion"
 
 export default function LevelOne() {
   const [stage, setStage] = useState("game")
@@ -33,23 +34,37 @@ export default function LevelOne() {
   if (stage === "choose") {
     return (
       <div className="final-container">
-        <Star />        
-        <Choose
-          imageOne={gameOne}
-          imageTwo={gameTwo}
-          textOne="Cogunauts Night"
-          textTwo="Deep Byte"
-          onSelect={handleSelect}
-        />
+        <Star />
+        <Motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1,   opacity: 1 }}
+          exit={{ scale: 1.2, opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >        
+          <Choose
+            imageOne={gameOne}
+            imageTwo={gameTwo}
+            textOne="Cogunauts Night"
+            textTwo="Deep Byte"
+            onSelect={handleSelect}
+          />
+        </Motion.div>
       </div>
     )
   }
 
 
   return (
-    <div className="level-one-container">
-      <Hyperspace />
-      <SpaceshipOne onWin={handleWin} />
-    </div>
+    <Motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0,   opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="level-one-container">
+        <Hyperspace />
+        <SpaceshipOne onWin={handleWin} />
+      </div>
+    </Motion.div>
   );
 }

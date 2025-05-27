@@ -80,6 +80,23 @@
   }
 }
 
+/* Journey */
+
+.journey-container {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+.journey-container img {
+  width: 400px;
+  animation: wave 1.5s ease-in-out infinite;
+}
+
 /* LevelOne */
 
 .level-one-container {
