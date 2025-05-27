@@ -65,7 +65,8 @@ export default function StarTransparent() {
     <div
       style={{
         position: "relative",
-        zIndex: 1
+        pointerEvents: "none",
+        zIndex: 1,
       }}
     >
       <Particles
