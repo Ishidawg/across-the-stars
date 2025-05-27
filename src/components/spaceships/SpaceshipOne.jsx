@@ -34,7 +34,7 @@ import levelSoundtrack from "@assets/sound/soundtrack/level-one.mp3"
 import Typography from "./common/Typography"
 import CustomImage from "./common/CustomImage"
 import useSound from "use-sound"
-import { useLocation, useNavigate } from "react-router"
+import { useLocation } from "react-router"
 
 const BUTTONS = [
   { id: 'small-1', normal: smallButton, pressed: smallButtonClick },
@@ -45,9 +45,9 @@ const BUTTONS = [
   { id: 'large-2', normal: largeButton, pressed: largeButtonClick }
 ]
 
-export default function SpaceshipOne() {
+export default function SpaceshipOne({ onWin }) {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [sequence, setSequence] = useState([])
   const [phase, setPhase] = useState('idle')
@@ -168,7 +168,8 @@ export default function SpaceshipOne() {
           setMessage('Você conseguiu!');
           setTimeout(() => {
             setMessage('Partindo em direção ao segundo mundo!');
-            setTimeout(() => navigate("/level_two"), 1000);
+            if (onWin) onWin()
+            // setTimeout(() => navigate("/level_two"), 1000); now I will pass as a prop to choose a game so...
           }, 1000);
         }, 1000);
         return

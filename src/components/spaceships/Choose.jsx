@@ -19,11 +19,11 @@
           </article>
           <main>
             <div>
-              <img src={imageOne} />
+              <img src={imageOne} onClick={() => setSelected(1)} />
               <h1>{textOne}</h1>
             </div>
             <div>
-              <img src={imageTwo} />
+              <img src={imageTwo} onClick={() => setSelected(2)} />
               <h1>{textTwo}</h1>
             </div>
           </main>

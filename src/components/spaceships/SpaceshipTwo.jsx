@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useNavigate } from "react-router"
+// import { useNavigate } from "react-router"
 import "../../App.css"
 import spaceship from "../../assets/png/level_two/background.png"
 import frozen from "../../assets/png/level_two/frozen.png"
@@ -15,7 +15,7 @@ import Typography from "./common/Typography"
 import Arrow from "../../assets/png/dialog/level_one/flecha-roxa.png"
 import Character from "../../assets/png/dialog/level_two/aurora.png"
 
-export default function SpaceshipTwo() {
+export default function SpaceshipTwo({ onWin }) {
   const [fireState, setFireState] = useState("high")
   const [blowState, setBlowState] = useState("low")
   const [message, setMessage] = useState("")
@@ -31,7 +31,7 @@ export default function SpaceshipTwo() {
 
   console.log(gameRunning) // yeah byattch... wtf Im doing
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const text = [
     "Planeta Gelo à vista! Congelante, traiçoeiro... e totalmente necessário. Se quiser mesmo colocar as mãos naquele console dos sonhos, vai ter que passar por esse frio cósmico primeiro.",
@@ -79,9 +79,20 @@ export default function SpaceshipTwo() {
     winTimeoutRef.current = setTimeout(() => {
       setGameWon(true)
       setGameRunning(false)
-      setTimeout(() => setMessage("Você venceu! Vamos para o nível final."), 500)
+      setTimeout(() => {
+        setMessage('Você conseguiu!');
+        setTimeout(() => {
+          setMessage('Escolha seu prêmio!');
+          setTimeout(() => {
+            setMessage('Para jogar no seu novo console!');
+          }, 800);
+        }, 800);
+      }, 800);
+      // setTimeout(() => setMessage("Parabéns!."), 500)
       // setMessage("Você venceu! Vamos para o nível final.")
       // setTimeout(() => navigate("/final_level"), 2000)
+
+      // if(onWin) onWin()
     }, 10000)
 
     startLowFireCountdown()
@@ -168,7 +179,8 @@ export default function SpaceshipTwo() {
           <Dialog dialog={text} image={Character} characterName="Aurora" arrow={Arrow} onClose={setDialogOpen} />
         )}
         {gameWon && (
-          <Dialog dialog={gameWonText} image={Character} characterName="Aurora" arrow={Arrow} onClose={ () => { navigate("/final")}} />
+          // <Dialog dialog={gameWonText} image={Character} characterName="Aurora" arrow={Arrow} onClose={ () => { navigate("/final")}} />
+          <Dialog dialog={gameWonText} image={Character} characterName="Aurora" arrow={Arrow} onClose={ () => { onWin() }} />
         )}
       </div>
     </>

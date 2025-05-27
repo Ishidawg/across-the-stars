@@ -397,14 +397,16 @@
 }
 
 .final-container {
-  height: 100dvh;
+  /* height: 100dvh;
   overflow: hidden;
-
-  background-color: hsla(0, 0%, 0%, 0.25);
-
+  background-image: url("/src/assets/png/final/loja.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   image-rendering: pixelated;
 }
 
@@ -415,6 +417,9 @@
   flex-direction: column;
   text-align: center;
   gap: 2rem;
+  z-index: 2;
+
+  transition: all 250ms ease;
 }
 
 .choose-container article {
@@ -439,6 +444,7 @@
 .choose-container main h1 {
   font-size: 3.2rem;
   color: var(--white-primary);
+  filter: drop-shadow(2px 2px 2px var(--purple-bg-hover));
 }
 
 .choose-container main {
@@ -446,6 +452,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .choose-container img {
@@ -459,14 +466,73 @@
   zoom: 1.2;
 }
 
+.car-cable-container {
+  height: 100dvh;
+  background-image: url("/src/assets/png/final/teleferico.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.final-title {
+  font-size: 6.2rem;
+  color: var(--white-primary);
+  animation: wave 1.5s ease-in-out infinite;
+
+  filter: drop-shadow(2px 2px 2px var(--purple-bg-hover));
+  z-index: 1;
+}
+
+.final-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 49.9%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.300);
+  /* backdrop-filter: blur(6px); */
+  pointer-events: none;
+
+  transition: all 20s ease;
+}
+
+.img-final {
+  z-index: 1;
+}
+
+.main-final-images {
+  z-index: 1;
+}
+
+.star-fade {
+  opacity: 0;
+  transition: opacity 5.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star-fade.show {
+  opacity: 1;
+}
+
 
 /* RESPONSIVE LAYOUT - ALWAYS ON BOTTOM! */
 
 @media (max-width: 560px) {
   .choose-container img {
-  width: 200px;
-  transition: all 250ms ease;
-}
+    width: 120px;
+    transition: all 250ms ease;
+  }
+
+  .final-title {
+    font-size: 4.2rem;
+  }
   
 }
 
