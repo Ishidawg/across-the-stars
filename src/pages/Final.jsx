@@ -1,11 +1,15 @@
 import "../App.css"
 import Star from "../components/particles/Star"
-import Choose from "../components/spaceships/Choose"
 import Dialog from "../components/spaceships/common/Dialog"
 import Character from "/src/assets/png/final/iara.png"
 import Arrow from "/src/assets/png/dialog/level_one/flecha-roxa.png"
 import console from "/src/assets/png/videogames/console.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+// Sounds
+import pageSoundtrack from "@assets/sound/soundtrack/completed-game.mp3"
+import useSound from "use-sound"
+import { useLocation, useNavigate } from "react-router"
 
 export default function Final() {
   const choice1 = localStorage.getItem("choice1")
@@ -17,6 +21,23 @@ export default function Final() {
   const [graduallyOpening, setgraduallyOpening] = useState(false)
   const [blur,setBlur] = useState(false)
   
+  const [play, { stop }] = useSound(pageSoundtrack, { volume: 1, loop: true });
+  const location = useLocation(); // need this to know if route changes, so I can stop music
+    const navigate = useNavigate()
+
+  useEffect(() => {
+    play()
+
+    // return means if the componente "unmounts" or smth like return itself
+    return () => stop()
+  }, [play, stop]); // need to add dependencies so the soundtrack can start, I don't know why yet tho
+  
+  useEffect(() => {
+    play()
+
+    // return means if the componente "unmounts" or smth like return itself
+    return () => stop()
+  }, [location.pathname]);
 
   const text = [
     "Você chegou longe... e trouxe os cartuchos. Estou impressionada.",
@@ -46,7 +67,7 @@ export default function Final() {
         {!isDialogOpen && (
           <>
             <h1 className="final-title">Jogue os jogos que você encontrou no <br></br>Station Lovetron </h1>
-            <img className="img-final" src={console} />
+            <img className="img-final" src={console} onClick={ () => navigate("/")} />
             <main className="main-final-images">
               <div>
                 <img className="img-final" src={choice1} />

@@ -411,6 +411,7 @@
 }
 
 .choose-container {
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -418,6 +419,7 @@
   text-align: center;
   gap: 2rem;
   z-index: 2;
+  overflow: hidden;
 
   transition: all 250ms ease;
 }

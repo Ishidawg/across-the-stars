@@ -61,7 +61,7 @@ export default function SpaceshipOne({ onWin }) {
 
   const [isDialogOpen, setDialogOpen] = useState(true)
 
-  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.2, loop: true });
+  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.5, loop: true });
   const [errorSFX] = useSound(errorSound, { volume: 0.5 })
   const [clickSFX] = useSound(clickElementSound, { volume: 0.5 })
 

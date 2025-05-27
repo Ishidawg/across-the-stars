@@ -15,6 +15,13 @@ import Typography from "./common/Typography"
 import Arrow from "../../assets/png/dialog/level_one/flecha-roxa.png"
 import Character from "../../assets/png/dialog/level_two/aurora.png"
 
+// Sounds
+import blowAirSound from "@assets/sound/soundeffects/blow-air.wav"
+import fireSound from "@assets/sound/soundeffects/fire.mp3"
+import levelSoundtrack from "@assets/sound/soundtrack/level-two.mp3"
+import useSound from "use-sound"
+import { useLocation } from "react-router"
+
 export default function SpaceshipTwo({ onWin }) {
   const [fireState, setFireState] = useState("high")
   const [blowState, setBlowState] = useState("low")
@@ -28,6 +35,36 @@ export default function SpaceshipTwo({ onWin }) {
   const noneRef = useRef(null)
   const winTimeoutRef = useRef(null)
   const countdownIntervalRef = useRef(null)
+
+  const [play, { stop }] = useSound(levelSoundtrack, { volume: 0.8, loop: true });
+  const [playFire, { stop: stopFire }] = useSound(fireSound, { volume: 0.3, loop: true });
+  const [blowAirSFX] = useSound(blowAirSound, { volume: 4 })
+
+  const location = useLocation(); // need this to know if route changes, so I can stop music
+
+  // useEffect(() => {
+  //   play()
+  //   playFire()
+
+  //   // return means if the componente "unmounts" or smth like return itself
+  //   return () => {
+  //     stop()
+  //     stopFire()
+  //   }
+  // }, [location.pathname, play, playFire, stop, stopFire]);
+
+  useEffect(() => {
+    play()
+    return () => stop()
+  }, [location.pathname, play, stop])
+
+  useEffect(() => {
+    if (fireState === "high") {
+      playFire()
+    } else {
+      stopFire()
+    }
+  }, [fireState, playFire, stopFire])
 
   console.log(gameRunning) // yeah byattch... wtf Im doing
 
@@ -128,6 +165,7 @@ export default function SpaceshipTwo({ onWin }) {
   }
 
   function handleBlowClick() {
+    blowAirSFX()
     if (gameWon) return
     setBlowState(prev => (prev === "low" ? "full" : "low"))
     setFireState("high")
